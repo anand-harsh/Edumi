@@ -7,7 +7,8 @@ import './home.css';
 import { CgGoogle, CgYoutube } from 'react-icons/cg';
 import { SiCoursera, SiUdemy } from 'react-icons/si';
 import { DiAws } from 'react-icons/di';
-import introVideo from '../assets/videos/intro.mp4';
+import introVideo from "../assets/videos/intro.mp4"
+
 
 const Home = () => {
   return (
@@ -57,7 +58,11 @@ const Home = () => {
       </Box>
 
       <div className="container2">
-        <video autoPlay controls src={introVideo}></video>
+        <video autoPlay controls src={introVideo}
+        controlsList='nodownload nofullscreen noremoteplayback'
+        disablePictureInPicture
+        disableRemotePlayback
+        ></video>
       </div>
     </section>
   );

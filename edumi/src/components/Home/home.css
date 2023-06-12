@@ -40,15 +40,23 @@
 }
 
 .container2{
-    margin: 1rem;
-    border: 2px solid black;
-    border-radius: 200px;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .container2 > video{
-    width: 50%;
-    height: 50%;
-    border-radius: 200px;
-    
+    border-radius: 5px;
+    box-shadow: 0 0 10px black;
+    outline: none;
+    width: 60%;
 }
+@media screen and (max-width: 600px){
+    .container2 > video{
+        width: 90%;
+    }
+}
+

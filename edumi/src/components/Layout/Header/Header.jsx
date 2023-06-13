@@ -1,26 +1,22 @@
 import React from 'react';
 import { ColorModeSwitcher } from '../../../ColorModeSwitcher';
-import { Button, DrawerContent } from '@chakra-ui/react';
-import { RiMenu5Fill } from 'react-icons/ri';
-import { Drawer, DrawerHeader } from '@chakra-ui/react';
-import { DrawerOverlay, DrawerBody } from '@chakra-ui/react';
-import { useDisclosure } from '@chakra-ui/react';
-import { VStack } from '@chakra-ui/react';
+import { RiMenu5Fill, RiLogoutBoxLine, RiDashboardFill } from 'react-icons/ri';
+import { Drawer, DrawerHeader, VStack, HStack, useDisclosure, Button, DrawerContent, DrawerOverlay, DrawerBody } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { HStack } from '@chakra-ui/react';
-import { RiLogoutBoxLine, RiDashboardFill } from 'react-icons/ri';
+
 import './header.css';
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isAuthenticated = true;
-  const user={
-    role:'admin'
-  }
+  const user = {
+    role: 'admin',
+  };
 
   const logoutHandler = () => {
     console.log('logout');
-  }
+    onClose();
+  };
   return (
     <>
       <ColorModeSwitcher className="switch" />
@@ -30,16 +26,28 @@ const Header = () => {
       <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader className="leftSlide" height={"3px"} borderBottomWidth={'1px'}>
+          <DrawerHeader
+            className="leftSlide"
+            height={'3px'}
+            borderBottomWidth={'1px'}
+          >
             COURSE BUNDLER
           </DrawerHeader>
           <DrawerBody>
             <VStack spacing={'4'} alignItems="flex-start">
-              <LinkButton url="/" title="Home" />
-              <LinkButton url="/courses" title="Browse All Courses" />
-              <LinkButton url="/request" title="Request A Course" />
-              <LinkButton url="/contact" title="Contact" />
-              <LinkButton url="/about" title="About" />
+              <LinkButton url="/" title="Home" onClose={onClose}/>
+              <LinkButton
+                url="/courses"
+                title="Browse All Courses"
+                onClose={onClose}
+              />
+              <LinkButton
+                url="/request"
+                title="Request A Course"
+                onClose={onClose}
+              />
+              <LinkButton url="/contact" title="Contact" onClose={onClose}/>
+              <LinkButton url="/about" title="About" onClose={onClose}/>
 
               <HStack
                 justifyContent={'space-evenly'}
@@ -51,31 +59,34 @@ const Header = () => {
                   <>
                     <VStack>
                       <HStack>
-                        <Link to="/profile">
+                        <Link to="/profile" onClick={onClose}>
                           <Button colorScheme={'yellow'}>Profile</Button>
                         </Link>
                         <p>OR</p>
 
-                          <Button colorScheme={'yellow'} onClick={logoutHandler}> <RiLogoutBoxLine />Logout</Button>
-                 
+                        <Button colorScheme={'yellow'} onClick={logoutHandler}>
+                          {' '}
+                          <RiLogoutBoxLine />
+                          Logout
+                        </Button>
                       </HStack>
-                      {
-                        user && user.role === 'admin' && <Link to="/admin/dashboard">
-                            <Button>
-                                <RiDashboardFill />
-                                Dashboard
-                            </Button>
+                      {user && user.role === 'admin' && (
+                        <Link onClick={onClose} to="/admin/dashboard">
+                          <Button>
+                            <RiDashboardFill />
+                            Dashboard
+                          </Button>
                         </Link>
-                      }
+                      )}
                     </VStack>
                   </>
                 ) : (
                   <>
-                    <Link to="/login">
+                    <Link to="/login" onClick={onClose}>
                       <Button colorScheme={'yellow'}>Login</Button>
                     </Link>
                     <p>OR</p>
-                    <Link to="/signup">
+                    <Link to="/signup" onClick={onClose}>
                       <Button colorScheme={'yellow'}>Sign Up</Button>
                     </Link>
                   </>

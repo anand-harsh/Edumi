@@ -2,12 +2,12 @@ import React from 'react';
 import { Stack, VStack, Heading, Text } from '@chakra-ui/react';
 import { Button, Image, Box, HStack } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import vg from '../assets/images/logo.png';
+import vg from '../../assets/images/logo.png';
 import './home.css';
 import { CgGoogle, CgYoutube } from 'react-icons/cg';
 import { SiCoursera, SiUdemy } from 'react-icons/si';
 import { DiAws } from 'react-icons/di';
-import introVideo from "../assets/videos/intro.mp4"
+import introVideo from "../../assets/videos/intro.mp4"
 
 
 const Home = () => {

@@ -14,3 +14,13 @@
     height: max-content;
     padding: 1rem 0rem 3rem 5rem;
 }
+
+.course{
+    margin-bottom: 1rem;
+    transition: all 0.5s;
+
+}
+
+.course:hover{
+    transform: translateY(1rem);
+}

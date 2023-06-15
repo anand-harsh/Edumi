@@ -5,9 +5,11 @@ import {
   FormLabel,
   Input,
   Box,
-  Link,
   Button,
 } from '@chakra-ui/react';
+
+import { Link } from 'react-router-dom';
+
 import React, { useState } from 'react';
 
 const Login = () => {
@@ -43,10 +45,10 @@ const Login = () => {
               focusBorderColor="yellow.400"
             />
           </Box>
-          <Box my={'4'}>
+          <Box>
             <Link to="/forgetpassword">
-              <Button variant={'link'} fontSize={'sm'}>
-                Forgot Password
+              <Button variant='link' fontSize={'sm'}>
+                Forgot Password?
               </Button>
             </Link>
           </Box>
@@ -57,9 +59,10 @@ const Login = () => {
 
           <Box my={'4'}>
             New User?
-            <Link to="/register">
-              <Button colorScheme="yellow" variant={'link'}>Sign Up</Button> {" "}
-              
+            <Link to="/signup">
+              <Button colorScheme="yellow" variant={'link'}>
+                Sign Up
+              </Button>{' '}
             </Link>
             here
           </Box>

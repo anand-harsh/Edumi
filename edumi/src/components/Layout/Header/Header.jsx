@@ -1,7 +1,17 @@
 import React from 'react';
 import { ColorModeSwitcher } from '../../../ColorModeSwitcher';
 import { RiMenu5Fill, RiLogoutBoxLine, RiDashboardFill } from 'react-icons/ri';
-import { Drawer, DrawerHeader, VStack, HStack, useDisclosure, Button, DrawerContent, DrawerOverlay, DrawerBody } from '@chakra-ui/react';
+import {
+  Drawer,
+  DrawerHeader,
+  VStack,
+  HStack,
+  useDisclosure,
+  Button,
+  DrawerContent,
+  DrawerOverlay,
+  DrawerBody,
+} from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
 import './header.css';
@@ -35,7 +45,7 @@ const Header = () => {
           </DrawerHeader>
           <DrawerBody>
             <VStack spacing={'4'} alignItems="flex-start">
-              <LinkButton url="/" title="Home" onClose={onClose}/>
+              <LinkButton url="/" title="Home" onClose={onClose} />
               <LinkButton
                 url="/courses"
                 title="Browse All Courses"
@@ -46,8 +56,8 @@ const Header = () => {
                 title="Request A Course"
                 onClose={onClose}
               />
-              <LinkButton url="/contact" title="Contact" onClose={onClose}/>
-              <LinkButton url="/about" title="About" onClose={onClose}/>
+              <LinkButton url="/contact" title="Contact" onClose={onClose} />
+              <LinkButton url="/about" title="About" onClose={onClose} />
 
               <HStack
                 justifyContent={'space-evenly'}

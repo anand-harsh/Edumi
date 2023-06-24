@@ -54,7 +54,7 @@ const Header = () => {
               <LinkButton
                 url="/request"
                 title="Request A Course"
-                onClose={onClose}
+                onClick={onClose}
               />
               <LinkButton url="/contact" title="Contact" onClose={onClose} />
               <LinkButton url="/about" title="About" onClose={onClose} />

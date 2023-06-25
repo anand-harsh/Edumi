@@ -32,7 +32,7 @@ const PaymentSuccess = () => {
         </Link>
 
         <Heading size='xs'>
-          Reference: dfghjugyftdrsdftgyhujgfctyutgfrewtfghjgfd
+          Reference: svskjdhdkjfkshfijkskvhdskladljf
         </Heading>
       </VStack>
     </Container>

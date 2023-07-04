@@ -13,7 +13,7 @@ const PaymentSuccess = () => {
         alignItems={'center'}
         borderRadius={'lg'}
       >
-        <Box w="full" bg="yellow.400" css={{ borderRadius: '8px 8px 0 0' }}>
+        <Box w="full" h='3rem' bg="yellow.400" css={{ borderRadius: '8px 8px 0 0' }}>
           <Text>Payment Success</Text>
         </Box>
 

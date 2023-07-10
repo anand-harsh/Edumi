@@ -6,17 +6,17 @@ const CoursePage = () => {
   const [lectureNumber, setLectureNumber] = useState(0);
   const lectures = [
     {
-      _id: 'sasasasa',
-      title: 'sample title',
-      description: 'sample description',
+      _id: 'id1',
+      title: ' title 1',
+      description: ' description 1',
       video: {
         url: 'Dwdwecac',
       },
     },
     {
-      _id: 'sasasasa',
-      title: 'sample title 2',
-      description: 'sample description',
+      _id: 'id2',
+      title: ' title 2',
+      description: ' description 2',
       video: {
         url: 'Dwdwecac',
       },

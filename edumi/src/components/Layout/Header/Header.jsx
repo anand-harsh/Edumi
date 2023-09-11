@@ -18,7 +18,7 @@ import './header.css';
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const isAuthenticated = false;
+  const isAuthenticated = true;
   const user = {
     role: 'admin',
   };
@@ -36,13 +36,13 @@ const Header = () => {
       <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader
+          {/* <DrawerHeader
             className="leftSlide"
-            height={'3px'}
+            height={'3rem'}
             borderBottomWidth={'1px'}
           >
             COURSE BUNDLER
-          </DrawerHeader>
+          </DrawerHeader> */}
           <DrawerBody>
             <VStack spacing={'4'} alignItems="flex-start">
               <LinkButton url="/" title="Home" onClose={onClose} />

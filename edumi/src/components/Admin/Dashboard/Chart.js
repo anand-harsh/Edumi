@@ -98,7 +98,7 @@ function getLastYearMonth(){
     for(let i=currMonth; i<months.length; i--){
         const elements=months[i]
         labels.unshift(elements)
-        if(i==0) break;
+        if(i===0) break;
 
         for(let i=11;i>remain;i--){
             if(i===currMonth) break;

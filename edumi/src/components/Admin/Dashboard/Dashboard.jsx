@@ -2,6 +2,8 @@ import React from 'react';
 import { Grid, Box, Text, Heading, Stack, HStack, Progress } from '@chakra-ui/react';
 import Sidebar from '../Sidebar';
 import { RiArrowUpDownFill, RiArrowUpLine } from 'react-icons/ri';
+import { DoughnutChart, LineChart } from './Chart';
+import { Doughnut } from 'react-chartjs-2';
 
 const Databox = ({ title, qty, qtyPercentage, profit }) => (
   <Box
@@ -91,7 +93,7 @@ const Dashboard = () => {
           ml={['0', '10']}
         />
         {/* Line graph here */}
-
+        <LineChart />
         <Grid templateColumns={['1fr', '2fr 1fr']} />
         <Box p="4">
           <Heading
@@ -112,6 +114,7 @@ const Dashboard = () => {
       py="4">
         <Heading textAlign={'center'} size="md" mb="4" children="Users"/>
         {/* Dought graph */}
+        <DoughnutChart />
       </Box>
 
     </Grid>

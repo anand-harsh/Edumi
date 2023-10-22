@@ -26,7 +26,7 @@ To deploy this project run
 2) Try to make proper changes in code without bug. 
 3) Refactor and enhancement will be appreciated.
 4) Raise PR and tag @anand-harsh for review.
-
+5) Make PR directly on master branch of Edumi.
 
 ## Authors
 

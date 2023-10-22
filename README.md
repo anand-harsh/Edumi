@@ -1,44 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Edumi
 
-In the project directory, you can run:
+Imagine a cutting-edge platform where educators can craft their own personalized classrooms, tailor-made for their unique teaching styles and needs. This innovative platform empowers teachers by allowing them to upload their own documentation, lecture notes, and course materials with ease. It also fosters seamless communication with students through integrated chat features, enabling real-time interaction and support. This dynamic digital environment not only enhances the teaching experience but also promotes a sense of ownership and creativity among educators, ultimately elevating the quality of education for both teachers and students alike.
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Deployment
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+To deploy this project run
 
-### `npm test`
+```bash
+  cd edumi
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+  npm i
+```
 
-### `npm run build`
+```bash
+  npm start
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Authors
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [Harsh Anand](https://www.github.com/anand-harsh)
 
-### `npm run eject`
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

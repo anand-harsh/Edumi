@@ -12,10 +12,10 @@ const Footer = () => {
     <Box padding={'4'} bg={'blackAlpha.800'} minH={'4vh'}>
       <Stack direction={['column', 'row']}>
         <VStack alignItems={['center', 'flex-start']} width="full">
-          <Heading children="All Right Reserved" color={'white'} style={{ overflowY: "hidden"}} size={'lg'}/>
+          <Heading children="All Right Reserved" color={'white'} style={{ overflowY: "hidden"}} size={'sm'}/>
           <Heading
             fontFamily={'body'}
-            children="Author: Github: anand-harsh"
+            children="Contribute: https://www.github.com/anand-harsh/Edumi"
             color={'yellow.400'}
             size={'sm'}
             style={{ overflowY: "hidden"}}
@@ -38,7 +38,7 @@ const Footer = () => {
               style={{ marginRight: '20px' }}
             />
           </a>
-          <a href="http://www.github.com">
+          <a href="https://www.github.com/anand-harsh/Edumi">
             <DiGithub
               size="2.4rem"
               color="white"

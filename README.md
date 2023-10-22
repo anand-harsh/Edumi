@@ -20,6 +20,13 @@ To deploy this project run
   npm start
 ```
 
+## Contributors
+
+1) You can work on the non assigned issues once it is assigned to you.
+2) Try to make proper changes in code without bug. 
+3) Refactor and enhancement will be appreciated.
+4) Raise PR and tag @anand-harsh for review.
+
 
 ## Authors
 

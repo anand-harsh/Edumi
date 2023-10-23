@@ -22,7 +22,7 @@ To deploy this project run
 
 ## Contributors
 
-1) You can work on the non assigned issues once it is assigned to you.
+1) You can work on the non assigned issues once it is assigned to you or you can raise issue and get it assigned.
 2) Try to make proper changes in code without bug. 
 3) Refactor and enhancement will be appreciated.
 4) Raise PR and tag @anand-harsh for review.

@@ -3,12 +3,11 @@ import { Grid, Box, Text, Heading, Stack, HStack, Progress } from '@chakra-ui/re
 import Sidebar from '../Sidebar';
 import { RiArrowUpDownFill, RiArrowUpLine } from 'react-icons/ri';
 import { DoughnutChart, LineChart } from './Chart';
-import { Doughnut } from 'react-chartjs-2';
 
 const Databox = ({ title, qty, qtyPercentage, profit }) => (
   <Box
     w={['full', '20%']}
-    h={'20%'}
+    h={'fit-content'}
     boxShadow={'-2px 0 10px rgba(107, 70, 193, 0.5)'}
     p="8"
     borderRadius={'lg'}

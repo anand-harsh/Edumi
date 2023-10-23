@@ -19,13 +19,19 @@ const Contact = () => {
   return(
   <Container>
     <VStack
-    h='full'
+    
+    h="78vh"
     justifyContent='center'
     spacing={'16'}
     >
       <Heading children={'Contact Us'} />
       <form action="" style={{ width: '100%' }}>
-        <Box my={'4'}>
+        <Box my={'3'}
+       
+        
+       
+       
+        >
           <FormLabel htmlFor="name" children="Name" />
           <Input
             required
@@ -38,7 +44,7 @@ const Contact = () => {
           />
         </Box>
 
-        <Box my={'4'}>
+        <Box my={'3'}>
           <FormLabel htmlFor="email" children="Email Address" />
           <Input
             required
@@ -51,7 +57,7 @@ const Contact = () => {
           />
         </Box>
 
-        <Box my={'4'}>
+        <Box my={'3'}>
           <FormLabel htmlFor="message" children="Message" />
           <Input
             required
@@ -63,11 +69,11 @@ const Contact = () => {
           />
         </Box>
 
-        <Button my={'4'} colorScheme="yellow" type="submit">
+        <Button my={'3'} colorScheme="yellow" type="submit">
           Send
         </Button>
 
-        <Box my={'4'}>
+        <Box my={'3'}>
             Resquest For a Course?
             <Link to="/request">
             {' '}

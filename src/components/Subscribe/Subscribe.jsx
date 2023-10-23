@@ -10,7 +10,7 @@ import {
 
 const Subscribe = () => {
   return (
-    <Container h="90vh" p="16">
+    <Container p="16">
       <Heading children="Welcome" my="8" textAlign={'center'} />
       <VStack boxShadow={'lg'} alignItems={'stretch'} my="8" spacing={'8'}>
         <Box bg="yellow.400" p={'4'} css={{ borderRadius: '8px 8px 0 0' }}>

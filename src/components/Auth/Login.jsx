@@ -16,7 +16,7 @@ const Login = () => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   return (
-    <Container h={'95vh'}>
+    <Container>
       <VStack h={'full'} justifyContent={'center'} spacing={'16'}>
         <Heading children={'Welcome to Edumi'} />
 

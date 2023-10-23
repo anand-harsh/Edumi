@@ -8,15 +8,15 @@ Imagine a cutting-edge platform where educators can craft their own personalized
 
 To deploy this project run
 
-```bash
+```
   cd edumi
 ```
 
-```bash
+```
   npm i
 ```
 
-```bash
+```
   npm start
 ```
 

@@ -18,10 +18,10 @@ const Sidebar = () => {
       boxShadow={'-2px 0 10px rgba(107, 70, 193, 0.5)'}
       minH={'100vh'}
     >
-      <LinkButton Icon={RiDashboardFill} text="Dashboard" url={'dashboard'} active={location.pathname==='admin/dashboard'}/>
-      <LinkButton Icon={RiEyeFill} text="Create Course" url={'createcourse'} active={location.pathname==="admin/createcourse"}/>
-      <LinkButton Icon={RiAddCircleFill} text="Courses" url={'courses'} active={location.pathname==="admin/courses"}/>
-      <LinkButton Icon={RiUser3Fill} text="User" url={'users'} active={location.pathname==="admin/users"}/>
+      <LinkButton Icon={RiDashboardFill} text="Dashboard" url={'dashboard'} active={location.pathname === 'admin/dashboard'} />
+      <LinkButton Icon={RiEyeFill} text="Create Course" url={'createcourse'} active={location.pathname === "admin/createcourse"} />
+      <LinkButton Icon={RiAddCircleFill} text="Courses" url={'courses'} active={location.pathname === "admin/courses"} />
+      <LinkButton Icon={RiUser3Fill} text="User" url={'users'} active={location.pathname === "admin/users"} />
     </VStack>
   );
 };

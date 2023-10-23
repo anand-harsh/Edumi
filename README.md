@@ -32,3 +32,5 @@ To deploy this project run
 
 - [Harsh Anand](https://www.github.com/anand-harsh)
 
+  Leave a Star devs ✨✨✨✨✨✨
+

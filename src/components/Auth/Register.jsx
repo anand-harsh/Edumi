@@ -39,7 +39,7 @@ const Register = () => {
     };
   };
   return (
-    <Container h={'130vh'} overflow="hidden">
+    <Container  overflow="hidden">
       <VStack
         h={'full'}
         justifyContent={'center'}

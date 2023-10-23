@@ -17,7 +17,7 @@ const Contact = () => {
   const [message, setMessage] = React.useState('');
 
   return(
-  <Container h="92vh">
+  <Container>
     <VStack
     h='full'
     justifyContent='center'

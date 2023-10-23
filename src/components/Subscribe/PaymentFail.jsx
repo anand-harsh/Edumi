@@ -12,7 +12,7 @@ import React from 'react';
 
 const PaymentFail = () => {
   return (
-    <Container>
+    <Container h={"90vh"}>
       <VStack justifyContent={'center'} h="full" spacing={'4'}>
         <RiErrorWarningFill />
         <Heading textTransform='uppercase' children="Payment Failed" my="8" textAlign={'center'} />

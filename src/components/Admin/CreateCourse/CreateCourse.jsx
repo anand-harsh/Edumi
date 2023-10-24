@@ -8,7 +8,8 @@ import {
   Input,
   Select,
   Image,
-  Button
+  Button,
+  GridItem
 } from '@chakra-ui/react';
 import Sidebar from '../Sidebar';
 
@@ -45,7 +46,8 @@ const CreateCourse = () => {
       minH={'100vh'}
       templateColumns={['1fr', '5fr 1fr']}
     >
-      <Container py="16">
+<GridItem>
+<Container py="16">
         <form>
           <Heading
             textTransform={'uppercase'}
@@ -112,8 +114,11 @@ const CreateCourse = () => {
           </VStack>
         </form>
       </Container>
-      <Box></Box>
+</GridItem>
+     
+      <GridItem colStart={2} colEnd={3} >
       <Sidebar />
+      </GridItem>
     </Grid>
   );
 };

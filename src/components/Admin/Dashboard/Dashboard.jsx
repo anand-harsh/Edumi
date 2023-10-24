@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Box, Text, Heading, Stack, HStack, Progress } from '@chakra-ui/react';
+import { Grid, Box, Text, Heading, Stack, HStack, Progress,GridItem } from '@chakra-ui/react';
 import Sidebar from '../Sidebar';
 import { RiArrowUpDownFill, RiArrowUpLine } from 'react-icons/ri';
 import { DoughnutChart, LineChart } from './Chart';
@@ -47,25 +47,33 @@ const Dashboard = () => {
       minH={'100vh'}
       templateColumns={['1fr', '5fr 1fr']}
     >
-      <Box boxSizing="border-box" py="16" px={['4', '0']}>
+      {/* this shows the updation status of Dashboard */}
+      <GridItem rowStart={2} colStart={1} colEnd={4}  >
         <Text
           textAlign={'center'}
           opacity={0.5}
           children={`Last change was on ${String(new Date()).split('G')[0]}`}
         />
-      </Box>
+      </GridItem>
 
-      <Heading
+     
+
+      {/* heading thats says dashboard  */}
+      <GridItem rowStart={1} colStart={1} colEnd={4} > <Heading
         children="Dashboard"
-        ml={['0', '16']}
+       
         mb="16"
-        textAlign={['center', 'left']}
-      />
-      <Stack
-        direction={['column', 'row']}
-        minH={'24'}
-        justifyContent={'space-evenly'}
-      >
+        textAlign={'center'}
+      /></GridItem>
+
+<GridItem colStart={1} colEnd={4} rowStart={4} >
+        <Stack
+          direction={['column', 'row']}
+          minH={'24'}
+          justifyContent={'space-evenly'}
+          p="2%"
+        >
+
         <Databox title="Views" qty={123} qtyPercentage={30} profit={true} />
         <Databox title="Users" qty={23} qtyPercentage={78} profit={true} />
         <Databox
@@ -75,8 +83,12 @@ const Dashboard = () => {
           profit={true}
         />
       </Stack>
+      </GridItem>
+
 
       <Sidebar />
+
+      
       <Box
         m={['0', '16']}
         borderRadius={'lg'}

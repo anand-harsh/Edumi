@@ -10,6 +10,7 @@ import ForgetPassword from './components/Auth/ForgetPassword';
 import ResetPassword from './components/Auth/ResetPassword';
 import Contact from './components/Contact.jsx/Contact';
 import Request from './components/Request/Request';
+import Notes from './components/Notes/Notes';
 import About from './components/About/About';
 import Subscribe from './components/Subscribe/Subscribe';
 import NotFound from './components/NotFound/NotFound';
@@ -39,6 +40,7 @@ function App() {
         <Route path="/signup" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/request" element={<Request />} />
+        <Route path="/notes" element={<Notes />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />

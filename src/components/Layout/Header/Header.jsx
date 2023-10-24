@@ -64,6 +64,7 @@ const Header = () => {
               <LinkButton url="/courses" title="Browse All Courses" closingHandler={onClose} />
               <LinkButton url="/request" title="Request A Course" closingHandler={onClose} />
               <LinkButton url="/contact" title="Contact" closingHandler={onClose} />
+              <LinkButton url="/notes" title="Notes" closingHandler={onClose} />
               <LinkButton url="/about" title="About" closingHandler={onClose} />
 
               {/* Profile, Logout, and Dashboard Button in sidebar */}

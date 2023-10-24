@@ -20,7 +20,7 @@ const Contact = () => {
   <Container>
     <VStack
     
-    h="78vh"
+   h= '80vh'
     justifyContent='center'
     spacing={'16'}
     >

@@ -9,7 +9,8 @@ import './footer.css';
 
 const Footer = () => {
   return (
-    <Box padding={'4'} bg={'blackAlpha.800'} minH={'4vh'}>
+    <Box padding={'4'} bg={'blackAlpha.800'} minH={'4vh'} position="fixed"
+    bottom="0" width='full'>
       <Stack direction={['column', 'row']}>
         <VStack alignItems={['center', 'flex-start']} width="full">
           <Heading children="All Right Reserved" color={'white'} style={{ overflowY: "hidden"}} size={'sm'}/>

@@ -8,8 +8,7 @@ import {
   Input,
   Select,
   Image,
-  Button,
-  GridItem
+  Button
 } from '@chakra-ui/react';
 import Sidebar from '../Sidebar';
 
@@ -44,10 +43,10 @@ const CreateCourse = () => {
         cusrsor: `url(), default`, // need to be updated
       }}
       minH={'100vh'}
-      templateColumns={['1fr', '5fr 1fr']}
+      templateColumns={['1fr', '1fr 5fr']}
     >
-<GridItem>
-<Container py="16">
+      <Sidebar />
+      <Container py="16">
         <form>
           <Heading
             textTransform={'uppercase'}
@@ -98,15 +97,15 @@ const CreateCourse = () => {
               type={'file'}
               focusBorderColor="purple.300"
               css={{
-                '&::file-selector-button':{
+                '&::file-selector-button': {
                   // ...fileUploadCss,
-                  color:'purple',
+                  color: 'purple',
                 },
               }}
               onChange={changeImageHandler}
             />
             {imagePrev && (
-              <Image src={imagePrev} boxSize="64" objectFit={'contain'}/>
+              <Image src={imagePrev} boxSize="64" objectFit={'contain'} />
             )}
             <Button w="full" colorScheme='purple' type="submit">
               Create
@@ -114,11 +113,7 @@ const CreateCourse = () => {
           </VStack>
         </form>
       </Container>
-</GridItem>
-     
-      <GridItem colStart={2} colEnd={3} >
-      <Sidebar />
-      </GridItem>
+
     </Grid>
   );
 };

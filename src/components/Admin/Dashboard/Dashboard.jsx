@@ -4,9 +4,6 @@ import Menu from './Menu';
 import { RiArrowUpDownFill, RiArrowUpLine } from 'react-icons/ri';
 import { DoughnutChart, LineChart } from './Chart';
 
-
-
-
 const Databox = ({ title, qty, qtyPercentage, profit }) => (
   <Box
     w={['full', '20%']}

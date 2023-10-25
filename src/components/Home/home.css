@@ -2,10 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden;
 }
 
 .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     padding: 5rem;
     box-sizing: border-box;

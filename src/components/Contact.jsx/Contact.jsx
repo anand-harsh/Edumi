@@ -19,31 +19,17 @@ const Contact = () => {
   const [viewportHeight, setViewportHeight] = useState(0);
 
   useEffect(() => {
-   
     const calculateViewportHeight = () => {
       const height = window.innerHeight;
-      
       const offset = 134; // 20 pixels
       setViewportHeight(height - offset);
     };
-
-    
     calculateViewportHeight();
     window.addEventListener('resize', calculateViewportHeight);
-
-    
     return () => {
       window.removeEventListener('resize', calculateViewportHeight);
     };
   }, []);
-
- 
-
-
-
-
-
-
   return(
   <Container>
     <VStack
@@ -108,8 +94,6 @@ const Contact = () => {
             here
           </Box>
       </form>
-
-      
     </VStack>
   </Container>
     )

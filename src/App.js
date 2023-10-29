@@ -21,6 +21,7 @@ import Dashboard from './components/Admin/Dashboard/Dashboard';
 import CreateCourse from './components/Admin/CreateCourse/CreateCourse';
 import AdminCourses from './components/Admin/AdminCourses/AdminCourses';
 import Users from './components/Admin/Users/Users';
+import Notes from './components/Notes/Notes';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
         <Route path="/*" element={<NotFound />} />
         <Route path="/paymentsuccess" element={<PaymentSuccess />} />
         <Route path="/paymentfail" element={<PaymentFail />} />
+        <Route path="/notes" element={<Notes/>}/>
 
         {/* Admin routes */}
         <Route path="/admin/dashboard" element={<Dashboard/>} />

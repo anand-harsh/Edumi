@@ -28,9 +28,8 @@ To deploy this project run
 4) Raise PR and tag @anand-harsh for review.
 5) Make PR directly on master branch of Edumi.
 
-## Authors
+## Authors || Maintainers
 
 - [Harsh Anand](https://www.github.com/anand-harsh)
 
-  Leave a Star devs ✨✨✨✨✨✨
 

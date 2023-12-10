@@ -27,9 +27,7 @@ To deploy this project run
 
 Contributions are always welcome!
 
-See `contributing.md` for ways to get started.
-
-Please adhere to this project's `code of conduct`.
+See `CONTRIBUTION.md` for ways to get started.
 
 ## Authors || Maintainers
 

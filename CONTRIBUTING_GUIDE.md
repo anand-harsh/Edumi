@@ -90,12 +90,6 @@ Consistency is key. Follow existing styles, formatting, and naming conventions o
 
 ---
 
-## :medal_sports: Certificate of Origin
-
-Before contributing, certify that your contribution meets certain criteria outlined in the Developer's Certificate of Origin 1.1.
-
----
-
 # Conclusion 
 
 Thank you for considering contributing to our project! Here's a summary of the contribution process:

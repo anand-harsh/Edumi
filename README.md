@@ -46,6 +46,9 @@ To deploy this project run
 
 ## Contributors
 
+<a href="https://github.com/anand-harsh/Edumi/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=OWNER/REPO" />
+</a>
 
 ## Contributing
 

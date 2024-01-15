@@ -8,7 +8,7 @@ import {
     Button,
   } from '@chakra-ui/react';
   import { Link } from 'react-router-dom';
-  
+  import GoToTopButton from '../Button/GoToTopButton';
   import React from 'react';
   
   const Request = () => {
@@ -79,6 +79,7 @@ import {
             </Box>
         </form>
       </VStack>
+      <GoToTopButton/>
     </Container>
       )
   };

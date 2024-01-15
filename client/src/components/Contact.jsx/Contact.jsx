@@ -10,6 +10,8 @@ import {
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import React from 'react';
+import GoToTopButton from '../Button/GoToTopButton'; // Import the GoToTopButton component
+
 
 const Contact = () => {
   const [name, setName] = React.useState('');
@@ -89,6 +91,8 @@ const Contact = () => {
           </Box>
         </form>
       </VStack>
+      {/* use button */}
+      <GoToTopButton/>
     </Container>
   );
 };

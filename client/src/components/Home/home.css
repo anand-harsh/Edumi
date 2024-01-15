@@ -60,3 +60,9 @@
     }
 }
 
+/* Add this to your CSS file */
+.go-to-top-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}

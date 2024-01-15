@@ -1,4 +1,4 @@
-import React, { useEffect ,useState} from 'react';
+import React from 'react';
 import { Stack, VStack, Heading, Text } from '@chakra-ui/react';
 import { Button, Image, Box, HStack } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
@@ -7,36 +7,11 @@ import './home.css';
 import { CgGoogle, CgYoutube } from 'react-icons/cg';
 import { SiCoursera, SiUdemy } from 'react-icons/si';
 import { DiAws } from 'react-icons/di';
-import introVideo from "../../assets/videos/intro.mp4"
+import introVideo from "../../assets/videos/intro.mp4";
+import GoToTopButton from '../Button/GoToTopButton'; // Import the GoToTopButton component
 
 
 const Home = () => {
-    // State to determine whether to show the "Go to Top" button
-  const [showButton, setShowButton] = useState(false);
-  // Function to scroll to the top when the button is clicked
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-  // Function to handle scroll events and update the state accordingly
-  const handleScroll = () => {
-    if (window.scrollY > 20) {
-      setShowButton(true);
-    } else {
-      setShowButton(false);
-    }
-  };
-  // Effect to add and remove the scroll event listener
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-
   return (
     <section className="home">
       <div className="container">
@@ -55,20 +30,7 @@ const Home = () => {
               Explore Now
             </Button>
           </VStack>
-          {showButton && (
-          <Button
-            size="lg"
-            colorScheme="blue"
-            onClick={scrollToTop}
-            className="go-to-top-button"
-            position="fixed" // Fixed position to stay in view
-            bottom="4"        // 4 units from the bottom
-            right="4"         // 4 units from the right
-          >
-            Go to Top
-          </Button>
-      )}
-
+          <GoToTopButton /> {/* Use the GoToTopButton component here */}
           <Image
             className="vector-graphics"
             boxSize={'md'}

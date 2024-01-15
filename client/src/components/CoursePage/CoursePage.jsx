@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Grid, Box, Heading, Text, VStack } from '@chakra-ui/react';
 import introVideo from '../../assets/videos/intro.mp4';
+import GoToTopButton from '../Button/GoToTopButton'; // Import the GoToTopButton component
 
 const CoursePage = () => {
   const [lectureNumber, setLectureNumber] = useState(0);
@@ -70,6 +71,7 @@ const CoursePage = () => {
           </button>
         ))}
       </VStack>
+      <GoToTopButton /> {/* Use the GoToTopButton component here */}
 
 
     </Grid>

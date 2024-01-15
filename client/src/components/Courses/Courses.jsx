@@ -14,6 +14,7 @@ import {
   Container,
   Link,
 } from '@chakra-ui/react';
+import GoToTopButton from '../Button/GoToTopButton'; // Import the GoToTopButton component
 
 const Course = ({
   views,
@@ -65,6 +66,7 @@ const Course = ({
         >
           Add to Playlist
         </Button>
+        <GoToTopButton/>
       </Stack>
     </VStack>
   );

@@ -13,6 +13,7 @@ import {
 import { Link } from 'react-router-dom';
 import introVideo from '../../assets/videos/intro.mp4';
 import { RiSecurePaymentFill } from 'react-icons/ri';
+import GoToTopButton from '../Button/GoToTopButton';
 
 const Founder = () => (
   <Stack direction={['column', 'row']} spacing={['4', '16']} padding={'8'}>
@@ -75,6 +76,7 @@ const About = () => {
           textTransform={'uppercase'}
         />
       </HStack>
+      <GoToTopButton/>
     </Container>
   );
 };

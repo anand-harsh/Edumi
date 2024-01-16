@@ -221,7 +221,6 @@ export const handleAdminDelete = async (req,res) => {
 
 export const handleAdminGetAllUser = async (req,res) => {
   if(req.user?.role === "admin"){
-    const id = req.params.id;
     const users = await User.find({role : "user"});
     return res
       .status(200)

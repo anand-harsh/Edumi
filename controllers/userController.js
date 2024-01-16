@@ -219,14 +219,11 @@ export const handleAdminDelete = async (req,res) => {
   }
 }
 
-export const handleAdminGetAllUser = async (req,res) => {
+export const handleAdminGetAllUser = async (req,res,next) => {
   if(req.user?.role === "admin"){
     const users = await User.find({role : "user"});
     if(users.length == 0){
-      return res.json({
-        success : false,
-        message: "No user found",
-      })
+      return next(new ErrorHandler("User Not Found",404));
     }
     return res
       .status(200)

@@ -184,3 +184,17 @@ export const removeFromPlaylist = catchAsyncError(async (req, res, next) => {
     message: "Removed From Playlist",
   });
 });
+
+export const handleDeleteSingleUser = async (req,res) => {
+  const id = req.user.id;
+  await User.findByIdAndDelete({_id : id});
+  return res
+    .status(200)
+    .cookie("token", null, {
+      expires: new Date(Date.now()),
+    })
+    .json({
+      success: true,
+      message: "Profile deleted successfully",
+    });
+}

@@ -222,6 +222,12 @@ export const handleAdminDelete = async (req,res) => {
 export const handleAdminGetAllUser = async (req,res) => {
   if(req.user?.role === "admin"){
     const users = await User.find({role : "user"});
+    if(users.length == 0){
+      return res.json({
+        success : false,
+        message: "No user found",
+      })
+    }
     return res
       .status(200)
       .json({users});

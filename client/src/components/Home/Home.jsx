@@ -22,13 +22,15 @@ const Home = () => {
           alignItems="center"
           spacing={['16', '56']}
         >
-          <VStack width={'full'} alignItems={['center', 'flex-end']}>
+         <VStack width={'full'} alignItems={['center', 'flex-end']}>
             <Heading children="LETS START WITH EDUMI" size={'2x1'} />
             <Text children="Your value comes from your skills" />
-            <Link to="/courses" />
-            <Button size={'lg'} colorScheme="yellow">
-              Explore Now
-            </Button>
+            {/* Corrected placement of Link */}
+            <Link to="/courses">
+              <Button size={'lg'} colorScheme="yellow">
+                Explore Now
+              </Button>
+            </Link>
           </VStack>
           <GoToTopButton /> {/* Use the GoToTopButton component here */}
           <Image

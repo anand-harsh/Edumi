@@ -13,6 +13,7 @@ import {
   addToPlaylist,
   removeFromPlaylist,
   handleDeleteSingleUser,
+  handleAdminDelete
 } from "../controllers/userController.js";
 import { isAuthenticated } from "../middlewares/Auth.js";
 
@@ -31,5 +32,6 @@ router.route("/resetpassword/:token").put(resetPassword);
 router.route("/addtoplaylist").post(isAuthenticated, addToPlaylist);
 router.route("/removefromplaylist").delete(isAuthenticated, removeFromPlaylist );
 router.route("/me").delete(isAuthenticated, handleDeleteSingleUser );
+router.route("/admin/users/:id").delete(isAuthenticated, handleAdminDelete );
 
 export default router;

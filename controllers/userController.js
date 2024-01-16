@@ -39,7 +39,6 @@ export const login = catchAsyncError(async (req, res, next) => {
   const isMatch = await user.comparePassword(password);
   if (!isMatch)
     return next(new ErrorHandler("Incorrect password or email", 401));
-
   sendToken(res, user, `Welcome back ${user.name}`, 200);
 });
 
@@ -187,7 +186,7 @@ export const removeFromPlaylist = catchAsyncError(async (req, res, next) => {
 
 
 export const handleDeleteSingleUser = async (req,res) => {
-  const id = req.params.id;
+  const id = req.user.id;
   await User.findByIdAndDelete({_id : id});
   return res
     .status(200)

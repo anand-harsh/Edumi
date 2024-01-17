@@ -28,19 +28,26 @@ const GoToTopButton = () => {
     };
   }, []);
 
-  const arrowColor = colorMode === 'dark' ? 'gray.300' : 'black'; // Adjust color based on theme
+  const arrowColor = colorMode === 'dark' ? 'white' : 'white'; // Adjust color based on theme
+  const colorScheme = colorMode === 'dark' ? 'black' : '#ecc94b'; // Adjust color based on theme
+  const hoverColor = colorMode === 'dark' ? 'gray.500' : 'yellow.400'; // Adjust color based on theme
 
   return (
     <>
       {showButton && (
         <Button
           size="lg"
-          colorScheme="blue"
           onClick={scrollToTop}
           className="go-to-top-button"
           position="fixed"
           bottom="4"
           right="4"
+          backgroundColor={colorScheme}
+          colorScheme='yellow'
+          _hover={hoverColor}
+          borderRadius={'30px'}
+          padding={'10px'}
+          zIndex={'60'}
         >
           <FaArrowUp color={arrowColor} /> {/* Apply color to the arrow */}
         </Button>

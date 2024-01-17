@@ -47,6 +47,7 @@ const GoToTopButton = () => {
           _hover={hoverColor}
           borderRadius={'30px'}
           padding={'10px'}
+          zIndex={'60'}
         >
           <FaArrowUp color={arrowColor} /> {/* Apply color to the arrow */}
         </Button>

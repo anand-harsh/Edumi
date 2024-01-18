@@ -1,8 +1,9 @@
 import React from 'react';
 import { Box, Stack, VStack, Heading, HStack } from '@chakra-ui/react';
 import {
-  TiSocialYoutubeCircular,
   TiSocialInstagramCircular,
+  TiSocialLinkedinCircular,
+  TiUser
 } from 'react-icons/ti';
 import { DiGithub } from 'react-icons/di';
 import './footer.css';
@@ -22,15 +23,15 @@ const Footer = () => {
           />
         </VStack>
         <HStack spacing={['2', '10']} justifyContent="center">
-          <a href="http://www.youtube.com">
-            <TiSocialYoutubeCircular
+          <a href="https://www.codedev.me">
+            <TiUser
               size="2.4rem"
               color="white"
               target={'blank'}
               style={{ marginRight: '20px' }}
             />
           </a>
-          <a href="http://www.instagram.com">
+          <a href="https://www.instagram.com/i.harshanand/">
             <TiSocialInstagramCircular
               size="2.4rem"
               color="white"
@@ -40,6 +41,14 @@ const Footer = () => {
           </a>
           <a href="https://www.github.com/anand-harsh/Edumi">
             <DiGithub
+              size="2.4rem"
+              color="white"
+              target={'blank'}
+              style={{ marginRight: '20px' }}
+            />
+          </a>
+          <a href="https://www.linkedin.com/in/anand-harsh/">
+            <TiSocialLinkedinCircular
               size="2.4rem"
               color="white"
               target={'blank'}

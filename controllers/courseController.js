@@ -29,6 +29,7 @@ export const createCourse = catchAsyncError(async (req, res, next) => {
   res.status(201).json({
     success: true,
     message: "Course created successfully. You can add lectures later",
+    course: createCourse,
   });
 });
 
@@ -61,6 +62,7 @@ export const addLectureToCourse = catchAsyncError(async (req, res, next) => {
   res.status(200).json({
     success: true,
     message: "Lecture added to the course successfully",
+    
   });
 });
 

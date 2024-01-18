@@ -12,6 +12,10 @@ import {
   resetPassword,
   addToPlaylist,
   removeFromPlaylist,
+  handleDeleteSingleUser,
+  handleAdminDelete,
+  handleAdminGetAllUser,
+  updateUserRole,
 } from "../controllers/userController.js";
 import { isAuthenticated } from "../middlewares/Auth.js";
 
@@ -28,6 +32,10 @@ router
 router.route("/forgetpassword").post(forgetPassword);
 router.route("/resetpassword/:token").put(resetPassword);
 router.route("/addtoplaylist").post(isAuthenticated, addToPlaylist);
-router.route("/removefromplaylist").delete(isAuthenticated, removeFromPlaylist );
+router.route("/removefromplaylist").delete(isAuthenticated, removeFromPlaylist);
+router.route("/me").delete(isAuthenticated, handleDeleteSingleUser);
+router.route("/admin/users/:id").delete(isAuthenticated, handleAdminDelete);
+router.route("/admin/users").get(isAuthenticated, handleAdminGetAllUser);
+router.route("/admin/users/:id").put(isAuthenticated, updateUserRole);
 
 export default router;

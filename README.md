@@ -8,7 +8,7 @@ Your journey with Edumi promises an immersive and dynamic experience, fostering 
 Thank you for choosing Edumi, where innovation meets education.
 
 
-## Local Deployment for Frontend
+## Local Deployment for Backend
 
 To deploy this project run
 
@@ -24,7 +24,7 @@ To deploy this project run
   npm start
 ```
 
-## Local Deployment for Backend
+## Local Deployment for Frontend
 
 To deploy this project run
 

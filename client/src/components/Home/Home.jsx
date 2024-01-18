@@ -10,24 +10,32 @@ import { DiAws } from 'react-icons/di';
 import introVideo from "../../assets/videos/intro.mp4";
 import GoToTopButton from '../Button/GoToTopButton'; // Import the GoToTopButton component
 
+const breakpoints = {
+  base: "0em", // 0px
+  sm: "30em", // ~480px
+  md: "48em", // ~768px
+  lg: "62em", // ~992px
+  xl: "80em", // ~1280px
+  "2xl": "96em", // ~1536px
+};
 
 const Home = () => {
   return (
     <section className="home">
       <div className="container">
         <Stack
-          direction={['column', 'row']}
+          direction={['column', 'column', 'row', 'row']}
           height="100%"
-          justifyContent={['center', 'space-between']}
+          justifyContent={['center']}
           alignItems="center"
-          spacing={['16', '56']}
+          spacing={['15', '15', '50']}
         >
-         <VStack width={'full'} alignItems={['center', 'flex-end']}>
-            <Heading children="LETS START WITH EDUMI" size={'2x1'} />
-            <Text children="Your value comes from your skills" />
+         <VStack width={['100%', '100%', '50%']} alignItems={'center'} spacing={5}>
+            <Heading children="LETS START WITH EDUMI" size={['sm', 'lg', 'xl']} textAlign={'center'} fontFamily={'sans-serif'}/>
+            <Text children="Your value comes from your skills" fontSize={['sm', 'lg', 'xl']} textAlign={'center'} fontFamily={'sans-serif'}/>
             {/* Corrected placement of Link */}
             <Link to="/courses">
-              <Button size={'lg'} colorScheme="yellow">
+              <Button size={'lg'} colorScheme="yellow" fontFamily={'monospace'}>
                 Explore Now
               </Button>
             </Link>
@@ -38,6 +46,7 @@ const Home = () => {
             boxSize={'md'}
             src={vg}
             objectFit="contain"
+            height={'70%'}
           />
         </Stack>
       </div>

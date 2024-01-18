@@ -14,7 +14,6 @@ export const register = catchAsyncError(async (req, res, next) => {
 
   let user = await User.findOne({ email });
   if (user) return next(new ErrorHandler("User already exists", 409));
-
   user = await User.create({
     name,
     email,
@@ -184,3 +183,76 @@ export const removeFromPlaylist = catchAsyncError(async (req, res, next) => {
     message: "Removed From Playlist",
   });
 });
+
+export const handleDeleteSingleUser = async (req, res) => {
+  const id = req.user.id;
+  await User.findByIdAndDelete({ _id: id });
+  return res
+    .status(200)
+    .cookie("token", null, {
+      expires: new Date(Date.now()),
+    })
+    .json({
+      success: true,
+      message: "Profile deleted successfully",
+    });
+};
+
+export const handleAdminDelete = async (req, res) => {
+  if (req.user?.role === "admin") {
+    const id = req.params.id;
+    await User.findByIdAndDelete({ _id: id });
+    return res.status(200).json({
+      success: true,
+      message: "Profile deleted successfully",
+    });
+  } else {
+    return res.status(200).json({
+      success: false,
+      message: "You are not admin",
+    });
+  }
+};
+
+export const handleAdminGetAllUser = async (req, res, next) => {
+  if (req.user?.role === "admin") {
+    const users = await User.find({ role: "user" });
+    if (users.length == 0) {
+      return next(new ErrorHandler("User Not Found", 404));
+    }
+    return res.status(200).json({ users });
+  } else {
+    return res.status(200).json({
+      success: false,
+      message: "You are not admin",
+    });
+  }
+};
+
+export const updateUserRole = async (req, res, next) => {
+  try {
+    // Extract Id
+    const { id } = req.params;
+
+    // Checking for User Existence
+    const isUserExist = await User.findById({ _id: id });
+
+    if (!isUserExist) {
+      // Response if User Not Exist
+      return next(new ErrorHandler("User Not Found", 400));
+    } else if (isUserExist.role === "admin") {
+      // Response if User is Already Admin
+      return next(new ErrorHandler("User is Already Admin", 400));
+    }
+
+    // Response if User Exist
+    isUserExist.role = "admin";
+    await isUserExist.save();
+
+    return res
+      .status(200)
+      .json({ success: true, message: "User Role Updated" });
+  } catch (error) {
+    next(new ErrorHandler("Error updating user role", 400));
+  }
+};

@@ -48,9 +48,9 @@ To deploy this project run
 ## Contributors
 
 <a href="https://github.com/anand-harsh/Edumi/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=anand-harsh/Edumi" />
+  <img src="https://contrib.rocks/image?repo=anand-harsh/Edumi&max=400&columns=20" />
+  <img src="https://us-central1-tooljet-hub.cloudfunctions.net/github" width="0" height="0" />
 </a>
-
 
 ## Contributing
 

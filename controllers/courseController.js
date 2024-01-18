@@ -32,14 +32,15 @@ export const createCourse = catchAsyncError(async (req, res, next) => {
   });
 });
 
-export const addLectureToPlaylist = catchAsyncError(async (req, res, next) => {
-  const { courseId } = req.body;
-  const { title, description, videoPublicId, videoUrl } = req.body.lecture;
+export const addLectureToCourse = catchAsyncError(async (req, res, next) => {
+  const courseId = req.params.id;
+  const { title, description } = req.body;
 
   const course = await Course.findById(courseId);
   if (!course) {
     return next(new ErrorHandler("Course not found", 404));
   }
+
   const existingLecture = course.lectures.find(
     (lecture) => lecture.title === title
   );
@@ -47,15 +48,14 @@ export const addLectureToPlaylist = catchAsyncError(async (req, res, next) => {
   if (existingLecture) {
     return next(new ErrorHandler("Lecture already exists in the course", 400));
   }
+
   course.lectures.push({
     title,
     description,
-    video: {
-      public_id: videoPublicId,
-      url: videoUrl,
-    },
   });
+
   course.numVideos += 1;
+
   await course.save();
 
   res.status(200).json({
@@ -63,5 +63,4 @@ export const addLectureToPlaylist = catchAsyncError(async (req, res, next) => {
     message: "Lecture added to the course successfully",
   });
 });
-
 

@@ -256,3 +256,17 @@ export const updateUserRole = async (req, res, next) => {
     next(new ErrorHandler("Error updating user role", 400));
   }
 };
+
+export const addCourse = catchAsyncError (async(req, res) => {
+  // Extract Course Id
+  const courseId = req.params.id;
+  const course = await Course.find({_id : courseId});
+
+  const userId = req.user?._id;
+  const user = await User.find({_id : userId});
+
+  user[0].playlist.push(courseId);
+  return res
+  .status(200)
+  .json({status:true, message: "Course added successfully" });
+});

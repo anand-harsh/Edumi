@@ -1,5 +1,6 @@
 import express from "express"
 import { getAllCourses , createCourse,addLectureToCourse} from "../controllers/courseController.js"
+import { addCourse} from "../controllers/userController.js";
 import { isAdminAuthenticated } from "../middlewares/adminAuth.js";
 import { isAuthenticated } from "../middlewares/Auth.js";
 const router=express.Router()
@@ -14,7 +15,7 @@ router.route("/createcourse").post(isAdminAuthenticated,createCourse)
 router.post("/course/:id", isAuthenticated, isAdminAuthenticated, addLectureToCourse);
 
 // TODO: Delete lectures,
-
+router.post("/addToPlaylist/:id",isAuthenticated,addCourse);
 
 // TODO:  get course details
 

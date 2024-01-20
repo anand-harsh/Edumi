@@ -4,7 +4,9 @@ import { FaArrowUp } from 'react-icons/fa';
 
 const GoToTopButton = () => {
   const [showButton, setShowButton] = useState(false);
+  const [stopPosition, setStopPosition] = useState(false);
   const { colorMode } = useColorMode(); // Access the current color mode (light or dark)
+
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -14,10 +16,15 @@ const GoToTopButton = () => {
   };
 
   const handleScroll = () => {
-    if (window.scrollY > 5) {
-      setShowButton(true);
+    const scrollY = window.scrollY;
+    const stopPosition = 960;
+
+    setShowButton(scrollY > 5);
+
+    if (scrollY > stopPosition) {
+      setStopPosition(true);
     } else {
-      setShowButton(false);
+      setStopPosition(false);
     }
   };
 
@@ -28,9 +35,22 @@ const GoToTopButton = () => {
     };
   }, []);
 
-  const arrowColor = colorMode === 'dark' ? 'white' : 'white'; // Adjust color based on theme
-  const colorScheme = colorMode === 'dark' ? 'black' : '#ecc94b'; // Adjust color based on theme
-  const hoverColor = colorMode === 'dark' ? 'gray.500' : 'yellow.400'; // Adjust color based on theme
+  const arrowColor = colorMode === 'dark' ? 'white' : 'white'; //Adjust color based on theme
+  const colorScheme = colorMode === 'dark' ? 'black' : '#ecc94b'; //Adjust color based on theme
+  const hoverColor = colorMode === 'dark' ? 'gray.500' : 'yellow.400';  // Adjust color based on theme
+
+  const buttonStyle = {
+    position: 'fixed',
+    bottom: stopPosition ? '90px' : '15px',
+    right: '16px',
+    backgroundColor: colorScheme,
+    colorScheme: 'yellow',
+    _hover: hoverColor,
+    borderRadius: '30px',
+    padding: '10px',
+    zIndex: '60',
+    transition: 'bottom 0.4s ease-in-out',
+  };
 
   return (
     <>
@@ -39,17 +59,9 @@ const GoToTopButton = () => {
           size="lg"
           onClick={scrollToTop}
           className="go-to-top-button"
-          position="fixed"
-          bottom="4"
-          right="4"
-          backgroundColor={colorScheme}
-          colorScheme='yellow'
-          _hover={hoverColor}
-          borderRadius={'30px'}
-          padding={'10px'}
-          zIndex={'60'}
+          style={buttonStyle}
         >
-          <FaArrowUp color={arrowColor} /> {/* Apply color to the arrow */}
+          <FaArrowUp color={arrowColor} />  {/* Apply color to the arrow */}
         </Button>
       )}
     </>

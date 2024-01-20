@@ -13,7 +13,7 @@ Thank you for choosing Edumi, where innovation meets education.
 To deploy this project run
 
 ```
-  cd edumi
+  cd Edumi
 ```
 
 ```
@@ -29,7 +29,7 @@ To deploy this project run
 To deploy this project run
 
 ```
-  cd edumi
+  cd Edumi
 ```
 
 ```

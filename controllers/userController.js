@@ -256,3 +256,40 @@ export const updateUserRole = async (req, res, next) => {
     next(new ErrorHandler("Error updating user role", 400));
   }
 };
+
+export const addCourse = catchAsyncError (async(req, res, next) => {
+  try {
+    const courseId = req.params.id;
+    const course = await Course.findById(courseId);
+    if(!course){
+      return next(new ErrorHandler(`No such Course Exist with id ${req.params.id}`, 400));
+    }
+    const userId = req.user?._id;
+    const user = await User.findById(userId);
+    const list = user.playlist;
+    let alreadyPresent = false;
+    list.forEach((obj1)=>{
+      if(!alreadyPresent&&obj1.course._id == courseId){
+        alreadyPresent = true
+      }
+    })
+    if(alreadyPresent){
+      return next(new ErrorHandler(`Course already Present in the Playlist`, 200));
+    }
+    else{
+      // Push the new playlist item
+      user.playlist.push({
+      course: courseId,
+      // poster: 'path/to/poster.jpg', // Replace with the actual poster path
+      });
+    
+      // Save the updated user document
+      await user.save();
+      res.status(200).json({ message: 'Course added to the playlist successfully' });
+    }
+  } 
+  catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});

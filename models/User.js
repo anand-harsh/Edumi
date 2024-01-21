@@ -75,7 +75,7 @@ schema.methods.getResetToken = function () {
     .createHash("sha256")
     .update(resetToken)
     .digest("hex");
-    this.resetPasswordExpire=Date.now()+15*60*1000 // 15 min
+  this.resetPasswordExpire = Date.now() + 15 * 60 * 1000; // 15 min
   return resetToken;
 };
 

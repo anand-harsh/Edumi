@@ -34,8 +34,15 @@ const Login = () => {
 
       const data = await res.json();
 
+      console.log(data);
       if (data?.success) {
-        localStorage.setItem('isAuth', true);
+        localStorage.setItem('isAuth', true, 3600000);
+        localStorage.setItem(
+          'userData',
+          JSON.stringify({ User: data?.user }),
+          3600000
+        );
+
         toast.success(`${data?.message}`, {
           position: 'top-right',
           autoClose: 5000,

@@ -13,10 +13,11 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 
 const Profile = () => {
+  const userData = JSON.parse(localStorage.getItem('userData'))?.User;
   const user = {
-    name: 'Harsh',
-    email: 'harsh@gmail.com',
-    createdAt: String(new Date().toString()),
+    name: userData?.name,
+    email: userData?.email,
+    createdAt: new Date(userData?.createdAt).toLocaleDateString('en-In'),
     role: 'user',
     subscription: {
       status: 'active',
@@ -24,7 +25,8 @@ const Profile = () => {
     playlist: [
       {
         course: 'sdfgrertfg',
-        poster: 'https://cdn.pixabay.com/illustrations/cat-feline-box-kawaii-animal-7928232/',
+        poster:
+          'https://cdn.pixabay.com/illustrations/cat-feline-box-kawaii-animal-7928232/',
       },
     ],
   };
@@ -92,19 +94,23 @@ const Profile = () => {
           flexWrap={'wrap'}
           p="4"
         >
-          {
-            user.playlist.map((element, index)=>(
-              <VStack w="48" m="2" key={element.course}>
-                <Image boxSize={'full'} objectFit="contain" src={element.poster}/>
+          {user.playlist.map((element, index) => (
+            <VStack w="48" m="2" key={element.course}>
+              <Image
+                boxSize={'full'}
+                objectFit="contain"
+                src={element.poster}
+              />
 
-                <HStack>
-                  <Link to={`/course/${element.course}`}>
-                    <Button colorScheme='yellow' variant={'ghost'}>Watch Now</Button>
-                  </Link>
-                </HStack>
-              </VStack>
-            )
-          )}
+              <HStack>
+                <Link to={`/course/${element.course}`}>
+                  <Button colorScheme="yellow" variant={'ghost'}>
+                    Watch Now
+                  </Button>
+                </Link>
+              </HStack>
+            </VStack>
+          ))}
         </Stack>
       )}
     </Container>

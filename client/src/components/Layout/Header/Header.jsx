@@ -44,6 +44,8 @@ const Header = () => {
 
   const logout = () => {
     localStorage.removeItem('isAuth');
+    localStorage.removeItem('userData');
+
     toast.success('Successful Logout', {
       position: 'top-right',
       autoClose: 5000,

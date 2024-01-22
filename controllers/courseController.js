@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { catchAsyncError } from "../middlewares/catchAsyncError.js";
 import { Course } from "../models/Course.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
@@ -50,9 +51,11 @@ export const addLectureToCourse = catchAsyncError(async (req, res, next) => {
     return next(new ErrorHandler("Lecture already exists in the course", 400));
   }
 
+  var lectureId = new mongoose.Types.ObjectId();// Generating the New Id for the Lectures
   course.lectures.push({
+    lectureId,
     title,
-    description,
+    description
   });
 
   course.numVideos += 1;

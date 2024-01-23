@@ -95,7 +95,7 @@ const Register = () => {
         navigate('/signup');
       }
     } catch (error) {
-      console.log(error);
+      console.log('Error' + error);
     }
   };
 

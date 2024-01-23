@@ -61,7 +61,13 @@ const Register = () => {
         localStorage.setItem('isAuth', true, 3600000);
         localStorage.setItem(
           'userData',
-          JSON.stringify({ User: data?.user }),
+          JSON.stringify({
+            User: {
+              name: data?.user?.name,
+              email: data?.user?.email,
+              createdAt: data?.user?.createdAt,
+            },
+          }),
           3600000
         );
         toast.success(`${data?.message}`, {

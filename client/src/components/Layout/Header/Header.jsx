@@ -10,7 +10,7 @@ import {
   DrawerOverlay,
   DrawerBody,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 // other file imports
@@ -37,6 +37,7 @@ const LinkButton = ({ url = '/', title = 'Home', closingHandler }) => (
  */
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
   const isAuthenticated = localStorage.getItem('isAuth'); // Change this based on user authentication status
   const user = {
     role: 'admin', // Change this based on the user's role
@@ -57,6 +58,7 @@ const Header = () => {
       theme: 'colored',
     });
     onClose();
+    navigate('/');
   };
 
   return (

@@ -1,12 +1,12 @@
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate, useLocation, Outlet } from 'react-router-dom';
 
-export default function ProtectedRoute({ children }) {
+export default function ProtectedRoute() {
   const { pathname } = useLocation();
 
   const isAuth =
     !!localStorage.getItem('isAuth') && !!localStorage.getItem('userData');
   if (isAuth) {
-    return <>{children}</>;
+    return <Outlet />;
   }
   return <Navigate to="/login" replace state={{ referrer: pathname }} />;
 }

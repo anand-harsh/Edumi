@@ -52,7 +52,7 @@ const Register = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, name, password, image }),
+        body: JSON.stringify({ email, name, password }),
       });
 
       const data = await res.json();

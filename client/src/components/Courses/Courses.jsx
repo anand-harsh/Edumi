@@ -28,7 +28,7 @@ const Course = ({
 }) => {
   return (
     <VStack className="course" alignItems={['center', 'flex-start']}>
-      <Image src={imageSrc} boxSize="60" objFile={'contain'} />
+      <Image src={imageSrc} boxSize="60" objectFit={'contain'} />
       <Heading
         textAlign={['center', 'left']}
         maxW="200px"
@@ -66,7 +66,7 @@ const Course = ({
         >
           Add to Playlist
         </Button>
-        <GoToTopButton/>
+        <GoToTopButton />
       </Stack>
     </VStack>
   );
@@ -125,7 +125,9 @@ const Courses = () => {
         <Course
           title={'Sample'}
           description={'sample des'}
-          imageSrc={'https://cdn.pixabay.com/illustrations/cat-feline-box-kawaii-animal-7928232/'}
+          imageSrc={
+            'https://cdn.pixabay.com/illustrations/cat-feline-box-kawaii-animal-7928232/'
+          }
           views={34}
           id={'sampleid'}
           creator={'sample creator'}

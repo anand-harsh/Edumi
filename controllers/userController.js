@@ -257,7 +257,7 @@ export const updateUserRole = async (req, res, next) => {
   }
 };
 
-export const addCourse = catchAsyncError (async(req, res, next) => {
+export const addCourseToUserPlaylist = catchAsyncError (async(req, res, next) => {
   try {
     const courseId = req.params.id;
     const course = await Course.findById(courseId);

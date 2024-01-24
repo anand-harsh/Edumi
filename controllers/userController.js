@@ -32,7 +32,9 @@ export const login = catchAsyncError(async (req, res, next) => {
   if (!email || !password)
     return next(new ErrorHandler("Please enter all feilds", 400));
 
-  let user = await User.findOne({ email }).select("password");
+  let user = await User.findOne({ email }).select(
+    "password name email createdAt"
+  );
   if (!user) return next(new ErrorHandler("Incorrect password or email", 401));
 
   const isMatch = await user.comparePassword(password);

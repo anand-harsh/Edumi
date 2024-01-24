@@ -8,8 +8,11 @@ import {
   Button,
   Avatar,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+
+import { API_ENDPOINT } from '../../config/constant';
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 export const fileUploadStyle = {
   '&::file-selector-button': {
@@ -23,11 +26,13 @@ export const fileUploadStyle = {
   },
 };
 const Register = () => {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [name, setName] = React.useState('');
-  const [imagePrev, setimagePrev] = React.useState('');
-  const [image, setImage] = React.useState('');
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [imagePrev, setimagePrev] = useState('');
+  const [image, setImage] = useState('');
 
   const changeImageHandler = e => {
     const file = e.target.files[0];
@@ -38,8 +43,64 @@ const Register = () => {
       setImage(file);
     };
   };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    try {
+      const res = await fetch(`${API_ENDPOINT}/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, name, password }),
+      });
+
+      const data = await res.json();
+
+      if (data?.success) {
+        localStorage.setItem('isAuth', true, 3600000);
+        localStorage.setItem(
+          'userData',
+          JSON.stringify({
+            User: {
+              name: data?.user?.name,
+              email: data?.user?.email,
+              createdAt: data?.user?.createdAt,
+            },
+          }),
+          3600000
+        );
+        toast.success(`${data?.message}`, {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+        });
+        navigate('/');
+      } else {
+        toast.error(`${data?.message}`, {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+        });
+        navigate('/signup');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <Container  overflow="hidden">
+    <Container overflow="hidden">
       <VStack
         h={'full'}
         justifyContent={'center'}
@@ -48,7 +109,10 @@ const Register = () => {
       >
         <Heading children={'Register'} textTransform={'uppercase'} />
 
-        <form action="" style={{ width: '100%', overflow: 'hidden' }}>
+        <form
+          style={{ width: '100%', overflow: 'hidden' }}
+          onSubmit={handleSubmit}
+        >
           <Box my="4" display={'flex'} justifyContent={'center'}>
             <Avatar size={'2xl'} src={imagePrev} />
           </Box>
@@ -104,7 +168,12 @@ const Register = () => {
             />
           </Box>
 
-          <Button my={'4'} colorScheme="yellow" type="submit">
+          <Button
+            my={'4'}
+            colorScheme="yellow"
+            type="submit"
+            onClick={handleSubmit}
+          >
             Sign Up
           </Button>
 
@@ -117,7 +186,6 @@ const Register = () => {
             </Link>
             here
           </Box>
-          
         </form>
       </VStack>
     </Container>

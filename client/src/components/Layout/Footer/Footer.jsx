@@ -14,7 +14,7 @@ const Footer = () => {
       <Stack direction={['column', 'row']}>
 
         <VStack alignItems={['center', 'flex-start']} width="full" height="300px">
-        <HStack spacing={['2', '55vW']} justifyContent="center">
+        <HStack spacing={['2', '55vw']} style={{ overflowY: "hidden" }} justifyContent="center">
         <Heading children="Let's Start with Edumi!" color={'yellow.400'} style={{ overflowY: "hidden" }} size={'lg'} />
         <a href="mailto:harsh.anand.ggl@gmail.com">
             <Box width={"130px"} bg={'#db3e00'} padding={'1'} borderRadius={'5px'} >
@@ -40,7 +40,7 @@ const Footer = () => {
             marginBottom={"20px"}
           />
 
-          <HStack spacing={['2', '5']} justifyContent="center">
+          <HStack spacing={['2', '5']} style={{ overflowY: "hidden" }} justifyContent="center">
             <Heading
               fontFamily={'body'}
               children="Build with us"
@@ -50,7 +50,7 @@ const Footer = () => {
               width={"150px"}
             />
             <a href="https://www.github.com/anand-harsh/Edumi">
-            <Box width={"130px"} bg={'white'} padding={'1'} borderRadius={'5px'}>
+            <Box width={"130px"} bg={'white'} padding={'1'} borderRadius={'5px'} style={{ overflowY: "hidden" }}>
             <Heading
               fontFamily={'body'}
               children="View on GitHub"
@@ -65,7 +65,7 @@ const Footer = () => {
           </HStack>
 
 
-          <HStack spacing={['2', '3']} justifyContent="center" marginLeft={"30px"} marginTop={"30px"}>
+          <HStack spacing={['2', '3']} justifyContent="center" marginLeft={"30px"} marginTop={"30px"} style={{ overflowY: "hidden" }}>
             <a href="https://www.codedev.me">
               <TiUser
                 size="2rem"

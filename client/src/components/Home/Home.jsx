@@ -70,7 +70,7 @@ const Home = () => {
       </Box>
 
       <div className="container2">
-        <video autoPlay controls src={introVideo}
+        <video autoPlay muted controls src={introVideo}
         controlsList='nodownload nofullscreen noremoteplayback'
         disablePictureInPicture
         disableRemotePlayback

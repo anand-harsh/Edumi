@@ -10,7 +10,8 @@ import {
   DrawerOverlay,
   DrawerBody,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 // other file imports
 import './header.css';
@@ -18,7 +19,7 @@ import { ColorModeSwitcher } from '../../../ColorModeSwitcher';
 
 /**
  * Reusable Component for LinkButton in the sidebar
- * 
+ *
  * @param {string} url (default value = "/") - The url link that renders corresponding component
  * @param {string} title (default value = "Home") - Text to display on LinkButton
  * @param {function} closingHandler - Handler function to close sidebar on click
@@ -29,19 +30,37 @@ const LinkButton = ({ url = '/', title = 'Home', closingHandler }) => (
   </Link>
 );
 
-
 /**
  * Header with Drawer and DarkMode Component
- * 
- * @returns {JSX.Element} Renders the header component 
+ *
+ * @returns {JSX.Element} Renders the header component
  */
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const isAuthenticated = true; // Change this based on user authentication status
+  const navigate = useNavigate();
+  const isAuthenticated = localStorage.getItem('isAuth'); // Change this based on user authentication status
   const user = {
     role: 'admin', // Change this based on the user's role
   };
-  
+
+  const logout = () => {
+    localStorage.removeItem('isAuth');
+    localStorage.removeItem('userData');
+
+    toast.success('Successful Logout', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+    });
+    onClose();
+    navigate('/');
+  };
+
   return (
     <>
       {/* Color mode switcher */}
@@ -58,12 +77,23 @@ const Header = () => {
         <DrawerContent>
           <DrawerBody>
             <VStack spacing={'4'} alignItems="flex-start">
-              
               {/* LinkButtons in the sidebar */}
               <LinkButton url="/" title="Home" closingHandler={onClose} />
-              <LinkButton url="/courses" title="Browse All Courses" closingHandler={onClose} />
-              <LinkButton url="/request" title="Request A Course" closingHandler={onClose} />
-              <LinkButton url="/contact" title="Contact" closingHandler={onClose} />
+              <LinkButton
+                url="/courses"
+                title="Browse All Courses"
+                closingHandler={onClose}
+              />
+              <LinkButton
+                url="/request"
+                title="Request A Course"
+                closingHandler={onClose}
+              />
+              <LinkButton
+                url="/contact"
+                title="Contact"
+                closingHandler={onClose}
+              />
               <LinkButton url="/about" title="About" closingHandler={onClose} />
 
               {/* Profile, Logout, and Dashboard Button in sidebar */}
@@ -81,7 +111,7 @@ const Header = () => {
                           <Button colorScheme={'yellow'}>Profile</Button>
                         </Link>
                         <p>OR</p>
-                        <Button colorScheme={'yellow'} onClick={onClose}>
+                        <Button colorScheme={'yellow'} onClick={logout}>
                           <RiLogoutBoxLine /> Logout
                         </Button>
                       </HStack>

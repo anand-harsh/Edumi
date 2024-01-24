@@ -3,6 +3,9 @@ import React, { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import App from './App';
 import './style.css';
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
@@ -12,6 +15,7 @@ root.render(
     <ChakraProvider theme={theme}>
       <ColorModeScript />
       <App />
+      <ToastContainer />
     </ChakraProvider>
   </StrictMode>
 );

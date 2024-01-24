@@ -1,0 +1,37 @@
+/* src/components/notes/Note.css */
+
+.note {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+    width: 300px; /* Adjust the width as needed */
+    height: 400px; /* Adjust the height as needed */
+    border-radius: 10px; /* Make the border circular */
+    overflow: hidden; 
+  }
+  
+  .notes-tab h1 {
+    font-size: 32px; /* Increase the font size */
+    font-weight: bold; /* Make the text bold */
+    margin-bottom: 20px; /* Add margin at the bottom for spacing */
+    color: #333; /* Adjust the text color as needed */
+    text-align: center; /* Center the text */
+    text-transform: uppercase; /* Convert text to uppercase */
+  }
+  
+  .note-image {
+    max-width: 100%;
+    max-height: 150px;
+    margin-bottom: 10px;
+    /* Ensure the image doesn't exceed the container width and height */
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .notes-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow notes to wrap to the next line if they exceed the container width */
+    justify-content: space-around; /* Distribute notes evenly along the main axis */
+  }
+  

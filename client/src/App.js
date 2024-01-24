@@ -22,6 +22,8 @@ import CreateCourse from './components/Admin/CreateCourse/CreateCourse';
 import AdminCourses from './components/Admin/AdminCourses/AdminCourses';
 import Users from './components/Admin/Users/Users';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
+import NotesTab from './components/Notes/NotesTab';
+
 
 function App() {
   window.addEventListener('contextmenu', e => {
@@ -37,6 +39,7 @@ function App() {
 
         <Route element={<ProtectedRoute />}>
           <Route path="/courses" element={<Courses />} />
+          <Route path="/notes" element={<NotesTab />} />
           <Route path="/courses/:id" element={<CoursePage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/request" element={<Request />} />

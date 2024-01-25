@@ -66,7 +66,6 @@ const Course = ({
         >
           Add to Playlist
         </Button>
-        <GoToTopButton />
       </Stack>
     </VStack>
   );
@@ -135,6 +134,7 @@ const Courses = () => {
           addToPlayListHandler={addToPlayListHandler}
         />
       </Stack>
+      <GoToTopButton />
     </Container>
   );
 };

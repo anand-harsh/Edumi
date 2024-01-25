@@ -17,10 +17,8 @@ const GoToTopButton = () => {
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
-    const stopPosition = 960;
-
-    setShowButton(scrollY > 5);
-
+    const stopPosition = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.body.clientHeight) - window.innerHeight - 70;
+    setShowButton(scrollY > 10);
     if (scrollY > stopPosition) {
       setStopPosition(true);
     } else {

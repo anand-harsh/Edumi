@@ -2,3 +2,8 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+@media (min-width: 500px){
+    .description{
+        width: 400px;
+    }
+}

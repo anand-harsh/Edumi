@@ -43,7 +43,8 @@ To deploy this project run
 ```
   npm start
 ```
-
+## Video for local installation ##
+[Local Installation Video](https://drive.google.com/file/d/1ak74fMtOAKvC0-1idiF1LOwos8YOFrGF/view?usp=sharing)
 
 ## Contributors
 

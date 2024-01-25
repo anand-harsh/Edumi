@@ -89,6 +89,8 @@ const Header = () => {
                 title="Request A Course"
                 closingHandler={onClose}
               />
+                <LinkButton url="/notes" title="Notes" closingHandler={onClose} />
+
               <LinkButton
                 url="/contact"
                 title="Contact"

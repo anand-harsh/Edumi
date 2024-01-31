@@ -22,7 +22,6 @@ router.post("/addToPlaylist/:id",isAuthenticated,addCourseToUserPlaylist);
 
 // TODO: Delete lectures,
 
-
 // TODO:  get course details
 router.get("/getAllCourses", isAuthenticated,getAllCoursesAvailable);
 

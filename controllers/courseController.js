@@ -94,7 +94,6 @@ export const getAllCoursesAvailable = catchAsyncError(async (req, res, next) => 
     return res.status(404).json({ success: false, message: 'No courses found' });
   }
 
-
   res.status(200).json({ success: true, courses });
 });
 

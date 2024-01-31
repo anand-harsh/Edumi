@@ -36,7 +36,7 @@ router.route("/addtoplaylist").post(isAuthenticated, addToPlaylist);
 router.route("/removefromplaylist").delete(isAuthenticated, removeFromPlaylist);
 router.route("/me").delete(isAuthenticated, handleDeleteSingleUser);
 router.route("/admin/users/:id").delete(isAuthenticated, handleAdminDelete);
-router.route("/getAllUsers").get(isAuthenticated,isAdminAuthenticated, AdminGetAllUsers);
+router.route("/getAllUsers").get(isAdminAuthenticated, AdminGetAllUsers);
 router.route("/admin/users/:id").put(isAuthenticated, updateUserRole);
 
 export default router;

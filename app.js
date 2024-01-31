@@ -11,7 +11,12 @@ config({
 });
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.use(
@@ -20,10 +25,24 @@ app.use(
   })
 );
 app.use(cookieParser());
+
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Credentials", true);
+//   res.setHeader(
+//     "Access-Control-Allow-Methods",
+//     "GET, POST, PUT,DELETE,OPTIONS"
+//   );
+//   res.setHeader(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+//   );
+//   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+//   next();
+// });
 // prefix
 app.use("/api/v1", course);
 app.use("/api/v1", user);
 
-export default app;
-
 app.use(ErrorMiddleware);
+
+export default app;

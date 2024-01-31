@@ -216,19 +216,19 @@ export const handleAdminDelete = async (req, res) => {
   }
 };
 
-
 export const AdminGetAllUsers = catchAsyncError(async (req, res, next) => {
+  console.log("Route");
 
-  
-    const users = await User.find({ role: "user" }).select('name email role createdAt');
+  const users = await User.find({ role: "user" }).select(
+    "name email role createdAt"
+  );
 
-    if (users.length === 0) {
-      return next(new ErrorHandler("Users Not Found", 404));
-    }
+  if (users.length === 0) {
+    return next(new ErrorHandler("Users Not Found", 404));
+  }
 
-    return res.status(200).json({ success: true, users });
-  } )
-
+  return res.status(200).json({ success: true, users });
+});
 
 export const updateUserRole = async (req, res, next) => {
   try {
@@ -258,40 +258,45 @@ export const updateUserRole = async (req, res, next) => {
   }
 };
 
-
-export const addCourseToUserPlaylist = catchAsyncError(async (req, res, next) => {
-  try {
-    const courseId = req.params.id;
-    const course = await Course.findById(courseId);
-    if (!course) {
-      return next(new ErrorHandler(`No such Course Exist with id ${req.params.id}`, 400));
-    }
-    const userId = req.user?._id;
-    const user = await User.findById(userId);
-    const list = user.playlist;
-    let alreadyPresent = false;
-    list.forEach((obj1) => {
-      if (!alreadyPresent && obj1.course._id == courseId) {
-        alreadyPresent = true
+export const addCourseToUserPlaylist = catchAsyncError(
+  async (req, res, next) => {
+    try {
+      const courseId = req.params.id;
+      const course = await Course.findById(courseId);
+      if (!course) {
+        return next(
+          new ErrorHandler(`No such Course Exist with id ${req.params.id}`, 400)
+        );
       }
-    })
-    if (alreadyPresent) {
-      return next(new ErrorHandler(`Course already Present in the Playlist`, 200));
-    }
-    else {
-      // Push the new playlist item
-      user.playlist.push({
-        course: courseId,
-        // poster: 'path/to/poster.jpg', // Replace with the actual poster path
+      const userId = req.user?._id;
+      const user = await User.findById(userId);
+      const list = user.playlist;
+      let alreadyPresent = false;
+      list.forEach((obj1) => {
+        if (!alreadyPresent && obj1.course._id == courseId) {
+          alreadyPresent = true;
+        }
       });
+      if (alreadyPresent) {
+        return next(
+          new ErrorHandler(`Course already Present in the Playlist`, 200)
+        );
+      } else {
+        // Push the new playlist item
+        user.playlist.push({
+          course: courseId,
+          // poster: 'path/to/poster.jpg', // Replace with the actual poster path
+        });
 
-      // Save the updated user document
-      await user.save();
-      res.status(200).json({ message: 'Course added to the playlist successfully' });
+        // Save the updated user document
+        await user.save();
+        res
+          .status(200)
+          .json({ message: "Course added to the playlist successfully" });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error" });
     }
   }
-  catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
+);

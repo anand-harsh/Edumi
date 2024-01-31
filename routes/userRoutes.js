@@ -14,10 +14,11 @@ import {
   removeFromPlaylist,
   handleDeleteSingleUser,
   handleAdminDelete,
-  handleAdminGetAllUser,
+  AdminGetAllUsers,
   updateUserRole,
 } from "../controllers/userController.js";
 import { isAuthenticated } from "../middlewares/Auth.js";
+import { isAdminAuthenticated } from "../middlewares/adminAuth.js";
 
 router.route("/register").post(register);
 router.route("/login").post(login);
@@ -35,7 +36,7 @@ router.route("/addtoplaylist").post(isAuthenticated, addToPlaylist);
 router.route("/removefromplaylist").delete(isAuthenticated, removeFromPlaylist);
 router.route("/me").delete(isAuthenticated, handleDeleteSingleUser);
 router.route("/admin/users/:id").delete(isAuthenticated, handleAdminDelete);
-router.route("/admin/users").get(isAuthenticated, handleAdminGetAllUser);
+router.route("/getAllUsers").get(isAuthenticated,isAdminAuthenticated, AdminGetAllUsers);
 router.route("/admin/users/:id").put(isAuthenticated, updateUserRole);
 
 export default router;

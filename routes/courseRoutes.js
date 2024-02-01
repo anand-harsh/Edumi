@@ -1,5 +1,5 @@
 import express from "express"
-import { getAllCourses , createCourse,addLectureToCourse, getCourseLectures} from "../controllers/courseController.js"
+import { getAllCourses , createCourse,addLectureToCourse, getCourseLectures,getAllCoursesAvailable} from "../controllers/courseController.js"
 import { isAdminAuthenticated } from "../middlewares/adminAuth.js";
 import { addCourseToUserPlaylist} from "../controllers/userController.js";
 import { isAuthenticated } from "../middlewares/Auth.js";
@@ -22,7 +22,7 @@ router.post("/addToPlaylist/:id",isAuthenticated,addCourseToUserPlaylist);
 
 // TODO: Delete lectures,
 
-
 // TODO:  get course details
+router.get("/getAllCourses", isAuthenticated,getAllCoursesAvailable);
 
 export default router;

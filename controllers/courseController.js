@@ -13,7 +13,7 @@ export const getAllCourses = catchAsyncError(async (req, res, next) => {
 
 export const createCourse = catchAsyncError(async (req, res, next) => {
   // if (!title || !description || !category || !createdBy)
-    // return next(new ErrorHandler("Please fill all the feilds", 400));
+  // return next(new ErrorHandler("Please fill all the feilds", 400));
   const { title, description, category, createdBy } = req.body;
   const file = req.file;
   await Course.create({
@@ -65,7 +65,7 @@ export const addLectureToCourse = catchAsyncError(async (req, res, next) => {
   res.status(200).json({
     success: true,
     message: "Lecture added to the course successfully",
-    
+
   });
 });
 
@@ -85,6 +85,16 @@ export const getCourseLectures = catchAsyncError(async (req, res, next) => {
     success: true,
     course,
   });
+});
+
+export const getAllCoursesAvailable = catchAsyncError(async (req, res, next) => {
+  const courses = await Course.find();
+
+  if (courses.length === 0) {
+    return res.status(404).json({ success: false, message: 'No courses found' });
+  }
+
+  res.status(200).json({ success: true, courses });
 });
 
 

@@ -1,6 +1,16 @@
 import React from 'react';
 import { RiMenu5Fill, RiLogoutBoxLine, RiDashboardFill } from 'react-icons/ri';
 import {
+  FcHome,
+  FcInfo,
+  FcFeedback,
+  FcSupport,
+  FcDoNotInsert,
+  FcDocument,
+  FcReading,
+  FcFolder,
+} from 'react-icons/fc';
+import {
   Drawer,
   VStack,
   HStack,
@@ -78,26 +88,51 @@ const Header = () => {
           <DrawerBody>
             <VStack spacing={'4'} alignItems="flex-start">
               {/* LinkButtons in the sidebar */}
-              <LinkButton url="/" title="Home" closingHandler={onClose} />
-              <LinkButton
-                url="/courses"
-                title="Browse All Courses"
-                closingHandler={onClose}
-              />
-              <LinkButton
-                url="/request"
-                title="Request A Course"
-                closingHandler={onClose}
-              />
-                <LinkButton url="/notes" title="Notes" closingHandler={onClose} />
+              <div className="sidebar-components">
+                <LinkButton url="/" title="Home" closingHandler={onClose} />
+                <FcHome className="icon-sidebar" />
+              </div>
+              <div className="sidebar-components">
+                <LinkButton
+                  url="/courses"
+                  title="Browse All Courses"
+                  closingHandler={onClose}
+                />
+                <FcFolder className="icon-sidebar" />
+              </div>
+              <div className="sidebar-components">
+                <LinkButton
+                  url="/request"
+                  title="Request A Course"
+                  closingHandler={onClose}
+                />
+                <FcReading className="icon-sidebar" />
+              </div>
+              <div className="sidebar-components">
+                <LinkButton
+                  url="/notes"
+                  title="Notes"
+                  closingHandler={onClose}
+                />
+                <FcDocument className="icon-sidebar" />
+              </div>
 
-              <LinkButton
-                url="/contact"
-                title="Contact"
-                closingHandler={onClose}
-              />
-              <LinkButton url="/about" title="About" closingHandler={onClose} />
-
+              <div className="sidebar-components">
+                <LinkButton
+                  url="/contact"
+                  title="Contact"
+                  closingHandler={onClose}
+                />
+                <FcFeedback className="icon-sidebar" />
+              </div>
+              <div className="sidebar-components">
+                <LinkButton
+                  url="/about"
+                  title="About"
+                  closingHandler={onClose}
+                />
+                <FcInfo className="icon-sidebar" />
+              </div>
               {/* Profile, Logout, and Dashboard Button in sidebar */}
               <HStack
                 justifyContent={'space-evenly'}

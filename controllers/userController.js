@@ -217,8 +217,6 @@ export const handleAdminDelete = async (req, res) => {
 };
 
 export const AdminGetAllUsers = catchAsyncError(async (req, res, next) => {
-  console.log("Route");
-
   const users = await User.find({ role: "user" }).select(
     "name email role createdAt"
   );

@@ -25,12 +25,15 @@ const Users = () => {
       credentials: 'include',
     });
     const data = await res.json();
-    console.log(data);
+    return data?.users;
   };
 
   useEffect(() => {
     try {
-      fetchUserData();
+      const data = async () => {
+        setUserList(await fetchUserData());
+      };
+      data();
     } catch (error) {
       console.log(error);
     }
@@ -54,11 +57,14 @@ const Users = () => {
             </Tr>
           </Thead>
           <Tbody>
-            <Tr>
-              <Td>inches</Td>
-              <Td>millimetres (mm)</Td>
-              <Td isNumeric>25.4</Td>
-            </Tr>
+            {Array.isArray(userList) &&
+              userList.map(user => (
+                <Tr key={user?._id}>
+                  <Td>{user?.name}</Td>
+                  <Td>{user?.email}</Td>
+                  <Td>{user?.role}</Td>
+                </Tr>
+              ))}
           </Tbody>
         </Table>
       </TableContainer>

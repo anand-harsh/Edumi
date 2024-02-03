@@ -24,3 +24,17 @@
 .course:hover{
     transform: translateY(1rem);
 }
+
+.sidebar-components{
+    display: flex;
+}
+.icon-sidebar{
+    margin-top: 10px;
+    font-size: 26px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.icon-sidebar:hover {
+    transform: scale(1.3);
+}

@@ -89,49 +89,48 @@ const Header = () => {
             <VStack spacing={'4'} alignItems="flex-start">
               {/* LinkButtons in the sidebar */}
               <div className="sidebar-components">
+                 <FcHome className="icon-sidebar" />
                 <LinkButton url="/" title="Home" closingHandler={onClose} />
-                <FcHome className="icon-sidebar" />
               </div>
               <div className="sidebar-components">
+                <FcFolder className="icon-sidebar" />
                 <LinkButton
                   url="/courses"
                   title="Browse All Courses"
                   closingHandler={onClose}
                 />
-                <FcFolder className="icon-sidebar" />
               </div>
               <div className="sidebar-components">
+                <FcReading className="icon-sidebar" />
                 <LinkButton
                   url="/request"
                   title="Request A Course"
                   closingHandler={onClose}
                 />
-                <FcReading className="icon-sidebar" />
               </div>
               <div className="sidebar-components">
+                 <FcDocument className="icon-sidebar" />
                 <LinkButton
                   url="/notes"
                   title="Notes"
                   closingHandler={onClose}
                 />
-                <FcDocument className="icon-sidebar" />
               </div>
-
               <div className="sidebar-components">
+                <FcFeedback className="icon-sidebar" />
                 <LinkButton
                   url="/contact"
                   title="Contact"
                   closingHandler={onClose}
                 />
-                <FcFeedback className="icon-sidebar" />
               </div>
               <div className="sidebar-components">
+                <FcInfo className="icon-sidebar" />
                 <LinkButton
                   url="/about"
                   title="About"
                   closingHandler={onClose}
                 />
-                <FcInfo className="icon-sidebar" />
               </div>
               {/* Profile, Logout, and Dashboard Button in sidebar */}
               <HStack

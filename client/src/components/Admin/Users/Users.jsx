@@ -20,12 +20,10 @@ const Users = () => {
   const navigate = useNavigate();
 
   const fetchUserData = async () => {
-    const token = localStorage.getItem('authToken');
     const res = await fetch(`${API_ENDPOINT}/getAllUsers`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
       },
       credentials: 'include',
     });

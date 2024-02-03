@@ -33,7 +33,7 @@ export const login = catchAsyncError(async (req, res, next) => {
     return next(new ErrorHandler("Please enter all feilds", 400));
 
   let user = await User.findOne({ email }).select(
-    "password name email createdAt"
+    "password name email role createdAt"
   );
   if (!user) return next(new ErrorHandler("Incorrect password or email", 401));
 

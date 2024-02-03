@@ -24,7 +24,6 @@ import Users from './components/Admin/Users/Users';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import NotesTab from './components/Notes/NotesTab';
 
-
 function App() {
   window.addEventListener('contextmenu', e => {
     e.preventDefault();
@@ -54,7 +53,7 @@ function App() {
         <Route path="/resetPassword/:token" element={<ResetPassword />} />
 
         {/* Admin routes */}
-        <Route element={<ProtectedRoute />}>
+        <Route element={<ProtectedRoute isAdmin />}>
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/createcourse" element={<CreateCourse />} />
           <Route path="/admin/courses" element={<AdminCourses />} />

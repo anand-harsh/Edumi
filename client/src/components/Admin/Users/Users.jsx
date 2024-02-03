@@ -11,27 +11,46 @@ import {
   TableContainer,
 } from '@chakra-ui/react';
 import Sidebar from '../Sidebar';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import { API_ENDPOINT } from '../../../config/constant';
 
 const Users = () => {
   const [userList, setUserList] = useState([]);
+  const navigate = useNavigate();
 
   const fetchUserData = async () => {
+    const token = localStorage.getItem('authToken');
     const res = await fetch(`${API_ENDPOINT}/getAllUsers`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
       credentials: 'include',
     });
     const data = await res.json();
-    return data?.users;
+    return data;
   };
 
   useEffect(() => {
     try {
       const data = async () => {
-        setUserList(await fetchUserData());
+        const fetchUserList = await fetchUserData();
+        if (!fetchUserList?.success) {
+          toast.warning('You Are Not Admin User', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'colored',
+          });
+          navigate('/');
+        }
+        setUserList(fetchUserList?.users);
       };
       data();
     } catch (error) {

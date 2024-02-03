@@ -29,12 +29,11 @@ const Login = () => {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({ email, password }),
       });
 
       const data = await res.json();
-
-      console.log(data);
 
       if (data?.success) {
         localStorage.setItem('isAuth', true, 3600000);

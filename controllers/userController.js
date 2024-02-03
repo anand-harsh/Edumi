@@ -217,15 +217,20 @@ export const handleAdminDelete = async (req, res) => {
 };
 
 export const AdminGetAllUsers = catchAsyncError(async (req, res, next) => {
-  const users = await User.find({ role: "user" }).select(
-    "name email role createdAt"
-  );
+  try {
+    const users = await User.find({ role: "user" }).select(
+      "name email role createdAt"
+    );
 
-  if (users.length === 0) {
-    return next(new ErrorHandler("Users Not Found", 404));
+    if (users.length === 0) {
+      return next(new ErrorHandler("Users Not Found", 404));
+    }
+
+    return res.status(200).json({ success: true, users });
+  } catch (error) {
+    console.log(error);
+    throw new ErrorHandler(error, 502);
   }
-
-  return res.status(200).json({ success: true, users });
 });
 
 export const updateUserRole = async (req, res, next) => {

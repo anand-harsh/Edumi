@@ -7,7 +7,7 @@ export default function ProtectedRoute({ isAdmin }) {
   const isAuth =
     !!localStorage.getItem('isAuth') && !!userData && isAdmin
       ? userData?.role === 'admin'
-      : userData?.role === 'user';
+      : userData?.role === 'user' || userData?.role === 'admin';
 
   if (isAuth) {
     return <Outlet />;

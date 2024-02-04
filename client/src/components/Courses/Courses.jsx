@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useState } from 'react';
 
@@ -15,6 +15,7 @@ import {
   Link,
 } from '@chakra-ui/react';
 import GoToTopButton from '../Button/GoToTopButton'; // Import the GoToTopButton component
+import { API_ENDPOINT } from '../../config/constant';
 
 const Course = ({
   views,
@@ -78,6 +79,30 @@ const addToPlayListHandler = () => {
 const Courses = () => {
   const [keyword, setKeyword] = useState('');
   const [category, setCategory] = useState('');
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      const res = await fetch(`${API_ENDPOINT}/courses`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
+      const data = await res.json();
+
+      if (data?.success) {
+        return data?.courses;
+      }
+    };
+
+    // Handling Promise
+    fetchCourses()
+      .then(data => setCourses(data))
+      .catch(err => console.log(err));
+  }, []);
+
   const categories = [
     'Web Development',
     'App Development',
@@ -121,18 +146,20 @@ const Courses = () => {
         justifyContent={['flex-start', 'space-evenly']}
         alignItems={['center', 'flex-start']}
       >
-        <Course
-          title={'Sample'}
-          description={'sample des'}
-          imageSrc={
-            'https://cdn.pixabay.com/illustrations/cat-feline-box-kawaii-animal-7928232/'
-          }
-          views={34}
-          id={'sampleid'}
-          creator={'sample creator'}
-          lectureCount={2}
-          addToPlayListHandler={addToPlayListHandler}
-        />
+        {courses?.map(course => (
+          <Course
+            title={course?.title}
+            description={course?.description}
+            imageSrc={
+              'https://cdn.pixabay.com/illustrations/cat-feline-box-kawaii-animal-7928232/'
+            }
+            views={course?.views}
+            id={course?._id}
+            creator={course?.createdBy}
+            lectureCount={2}
+            addToPlayListHandler={addToPlayListHandler}
+          />
+        ))}{' '}
       </Stack>
       <GoToTopButton />
     </Container>

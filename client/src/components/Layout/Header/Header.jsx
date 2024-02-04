@@ -1,16 +1,6 @@
 import React from 'react';
 import { RiMenu5Fill, RiLogoutBoxLine, RiDashboardFill } from 'react-icons/ri';
 import {
-  FcHome,
-  FcInfo,
-  FcFeedback,
-  FcSupport,
-  FcDoNotInsert,
-  FcDocument,
-  FcReading,
-  FcFolder,
-} from 'react-icons/fc';
-import {
   Drawer,
   VStack,
   HStack,
@@ -49,9 +39,7 @@ const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
   const isAuthenticated = localStorage.getItem('isAuth'); // Change this based on user authentication status
-  const user = {
-    role: 'admin', // Change this based on the user's role
-  };
+  const userData = JSON.parse(localStorage.getItem('userData'))?.User;
 
   const logout = () => {
     localStorage.removeItem('isAuth');
@@ -88,50 +76,26 @@ const Header = () => {
           <DrawerBody>
             <VStack spacing={'4'} alignItems="flex-start">
               {/* LinkButtons in the sidebar */}
-              <div className="sidebar-components">
-                 <FcHome className="icon-sidebar" />
-                <LinkButton url="/" title="Home" closingHandler={onClose} />
-              </div>
-              <div className="sidebar-components">
-                <FcFolder className="icon-sidebar" />
-                <LinkButton
-                  url="/courses"
-                  title="Browse All Courses"
-                  closingHandler={onClose}
-                />
-              </div>
-              <div className="sidebar-components">
-                <FcReading className="icon-sidebar" />
-                <LinkButton
-                  url="/request"
-                  title="Request A Course"
-                  closingHandler={onClose}
-                />
-              </div>
-              <div className="sidebar-components">
-                 <FcDocument className="icon-sidebar" />
-                <LinkButton
-                  url="/notes"
-                  title="Notes"
-                  closingHandler={onClose}
-                />
-              </div>
-              <div className="sidebar-components">
-                <FcFeedback className="icon-sidebar" />
-                <LinkButton
-                  url="/contact"
-                  title="Contact"
-                  closingHandler={onClose}
-                />
-              </div>
-              <div className="sidebar-components">
-                <FcInfo className="icon-sidebar" />
-                <LinkButton
-                  url="/about"
-                  title="About"
-                  closingHandler={onClose}
-                />
-              </div>
+              <LinkButton url="/" title="Home" closingHandler={onClose} />
+              <LinkButton
+                url="/courses"
+                title="Browse All Courses"
+                closingHandler={onClose}
+              />
+              <LinkButton
+                url="/request"
+                title="Request A Course"
+                closingHandler={onClose}
+              />
+              <LinkButton url="/notes" title="Notes" closingHandler={onClose} />
+
+              <LinkButton
+                url="/contact"
+                title="Contact"
+                closingHandler={onClose}
+              />
+              <LinkButton url="/about" title="About" closingHandler={onClose} />
+
               {/* Profile, Logout, and Dashboard Button in sidebar */}
               <HStack
                 justifyContent={'space-evenly'}
@@ -151,7 +115,7 @@ const Header = () => {
                           <RiLogoutBoxLine /> Logout
                         </Button>
                       </HStack>
-                      {user && user.role === 'admin' && (
+                      {userData && userData?.role === 'admin' && (
                         <Link onClick={onClose} to="/admin/dashboard">
                           <Button>
                             <RiDashboardFill /> Dashboard

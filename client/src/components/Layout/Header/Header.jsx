@@ -39,9 +39,7 @@ const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
   const isAuthenticated = localStorage.getItem('isAuth'); // Change this based on user authentication status
-  const user = {
-    role: 'admin', // Change this based on the user's role
-  };
+  const userData = JSON.parse(localStorage.getItem('userData'))?.User;
 
   const logout = () => {
     localStorage.removeItem('isAuth');
@@ -89,7 +87,7 @@ const Header = () => {
                 title="Request A Course"
                 closingHandler={onClose}
               />
-                <LinkButton url="/notes" title="Notes" closingHandler={onClose} />
+              <LinkButton url="/notes" title="Notes" closingHandler={onClose} />
 
               <LinkButton
                 url="/contact"
@@ -117,7 +115,7 @@ const Header = () => {
                           <RiLogoutBoxLine /> Logout
                         </Button>
                       </HStack>
-                      {user && user.role === 'admin' && (
+                      {userData && userData?.role === 'admin' && (
                         <Link onClick={onClose} to="/admin/dashboard">
                           <Button>
                             <RiDashboardFill /> Dashboard

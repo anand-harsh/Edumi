@@ -23,6 +23,7 @@ import AdminCourses from './components/Admin/AdminCourses/AdminCourses';
 import Users from './components/Admin/Users/Users';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import NotesTab from './components/Notes/NotesTab';
+import UpdateProfile from './components/ProfileUpdate';
 
 function App() {
   window.addEventListener('contextmenu', e => {
@@ -48,6 +49,7 @@ function App() {
           <Route path="/subscribe" element={<Subscribe />} />
           <Route path="/paymentsuccess" element={<PaymentSuccess />} />
           <Route path="/paymentfail" element={<PaymentFail />} />
+          <Route path="/profile/updateprofile" element={<UpdateProfile />} />
         </Route>
 
         <Route path="/resetPassword/:token" element={<ResetPassword />} />

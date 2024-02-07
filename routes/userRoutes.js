@@ -16,6 +16,7 @@ import {
   handleAdminDelete,
   AdminGetAllUsers,
   updateUserRole,
+  updateDetails,
 } from "../controllers/userController.js";
 import { isAuthenticated } from "../middlewares/Auth.js";
 import { isAdminAuthenticated } from "../middlewares/adminAuth.js";
@@ -38,5 +39,7 @@ router.route("/me").delete(isAuthenticated, handleDeleteSingleUser);
 router.route("/admin/users/:id").delete(isAuthenticated, handleAdminDelete);
 router.route("/getAllUsers").get(isAdminAuthenticated, AdminGetAllUsers);
 router.route("/admin/users/:id").put(isAuthenticated, updateUserRole);
+
+router.route("/user/details/update").put(isAuthenticated, updateDetails);
 
 export default router;

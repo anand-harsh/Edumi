@@ -303,3 +303,50 @@ export const addCourseToUserPlaylist = catchAsyncError(
     }
   }
 );
+
+export const updateDetails = catchAsyncError(async (req, res, next) => {
+  try {
+    // Extract Details from Body
+    const {
+      name,
+      email,
+      organization,
+      contactNumber,
+      address,
+      officeAddress,
+      social,
+    } = req.body;
+
+    if (
+      [name, email, contactNumber, address].some((attr) => attr.trim() === "")
+    ) {
+      return res
+        .status(402)
+        .json({ success: false, message: "Required Fields Missing" });
+    }
+
+    const isUserExist = await User.findById(req.user._id).select("-password");
+
+    if (isUserExist) {
+      const isUpdated = await User.findByIdAndUpdate(
+        { _id: isUserExist?._id },
+        {
+          $set: {
+            name,
+            email,
+          },
+        }
+      );
+      isUpdated &&
+        res
+          .status(200)
+          .json({ success: true, message: "Information Updated Successfully" });
+    } else {
+      res
+        .status(502)
+        .json({ success: false, message: "Failed to Update Details" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});

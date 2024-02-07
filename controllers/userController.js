@@ -318,7 +318,9 @@ export const updateDetails = catchAsyncError(async (req, res, next) => {
     } = req.body;
 
     if (
-      [name, email, contactNumber, address].some((attr) => attr.trim() === "")
+      [name, email, contactNumber, address].some(
+        (attr) => attr?.trim() === "" || !attr
+      )
     ) {
       return res
         .status(402)

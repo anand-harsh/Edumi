@@ -339,13 +339,10 @@ export const updateDetails = catchAsyncError(async (req, res, next) => {
           },
         }
       );
-      const UserData = await User.findById(req.user._id);
       isUpdated &&
-        res.status(200).json({
-          success: true,
-          message: "Information Updated Successfully",
-          User: UserData,
-        });
+        res
+          .status(200)
+          .json({ success: true, message: "Information Updated Successfully" });
     } else {
       res
         .status(502)

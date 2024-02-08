@@ -11,6 +11,8 @@ import {
   Button,
 } from '@chakra-ui/react';
 import GoToTopButton from '../Button/GoToTopButton';
+import { toast } from 'react-toastify';
+import { API_ENDPOINT } from '../../config/constant';
 
 const UpdateProfile = () => {
   const navigate = useNavigate();
@@ -29,16 +31,55 @@ const UpdateProfile = () => {
 
   const handleChange = e => {
     const { name, value } = e.target;
+
     setFormData({
       ...formData,
       [name]: value,
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    // Perform submission logic here, for now, just redirect to /profile
-    navigate('/profile');
+
+    const res = await fetch(`${API_ENDPOINT}/user/details/update`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+      credentials: 'include',
+    });
+    const data = await res.json();
+    if (data?.success) {
+      localStorage.setItem(
+        'userData',
+        JSON.stringify({ User: data?.User }),
+        3600000
+      );
+      toast.success('Profile Updated', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+      navigate('/profile');
+    } else {
+      toast.error('Failed to Update Profile', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+      navigate('/profile/updateprofile');
+    }
   };
 
   return (
@@ -57,7 +98,7 @@ const UpdateProfile = () => {
             </FormLabel>
             <Input
               required
-              id="name"
+              name="name"
               value={formData.name}
               onChange={handleChange}
               placeholder="Enter your Name"
@@ -73,7 +114,7 @@ const UpdateProfile = () => {
             </FormLabel>
             <Input
               required
-              id="email"
+              name="email"
               value={formData.email}
               onChange={handleChange}
               placeholder="abc@example.com"
@@ -84,7 +125,7 @@ const UpdateProfile = () => {
           <Box w="100%">
             <FormLabel htmlFor="organisation">Organisation</FormLabel>
             <Input
-              id="organisation"
+              name="organisation"
               value={formData.organisation}
               onChange={handleChange}
               placeholder="Your Organisation"
@@ -100,7 +141,7 @@ const UpdateProfile = () => {
             </FormLabel>
             <Input
               required
-              id="contactNumber"
+              name="contactNumber"
               value={formData.contactNumber}
               onChange={handleChange}
               placeholder="123-456-7890"
@@ -117,7 +158,7 @@ const UpdateProfile = () => {
             </FormLabel>
             <Textarea
               required
-              id="address"
+              name="address"
               value={formData.address}
               onChange={handleChange}
               placeholder="Your Address"
@@ -127,7 +168,7 @@ const UpdateProfile = () => {
           <Box w="100%">
             <FormLabel htmlFor="linkedin">Linkedin</FormLabel>
             <Input
-              id="linkedin"
+              name="linkedin"
               value={formData.linkedin}
               onChange={handleChange}
               placeholder="Your Linkedin"
@@ -137,7 +178,7 @@ const UpdateProfile = () => {
           <Box w="100%">
             <FormLabel htmlFor="github">Github</FormLabel>
             <Input
-              id="github"
+              name="github"
               value={formData.github}
               onChange={handleChange}
               placeholder="Your Github"
@@ -147,7 +188,7 @@ const UpdateProfile = () => {
           <Box w="100%">
             <FormLabel htmlFor="twitter">Twitter</FormLabel>
             <Input
-              id="twitter"
+              name="twitter"
               value={formData.twitter}
               onChange={handleChange}
               placeholder="Your Twitter"
@@ -157,7 +198,7 @@ const UpdateProfile = () => {
           <Box w="100%">
             <FormLabel htmlFor="instagram">Instagram</FormLabel>
             <Input
-              id="instagram"
+              name="instagram"
               value={formData.instagram}
               onChange={handleChange}
               placeholder="Your Instagram"
@@ -167,7 +208,7 @@ const UpdateProfile = () => {
           <Box w="100%">
             <FormLabel htmlFor="officeAddress">Office Address</FormLabel>
             <Textarea
-              id="officeAddress"
+              name="officeAddress"
               value={formData.officeAddress}
               onChange={handleChange}
               placeholder="Office Address"

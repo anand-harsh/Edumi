@@ -341,13 +341,11 @@ export const updateDetails = catchAsyncError(async (req, res, next) => {
       );
       const UserData = await User.findById(req.user._id);
       isUpdated &&
-        res
-          .status(200)
-          .json({
-            success: true,
-            message: "Information Updated Successfully",
-            User: UserData,
-          });
+        res.status(200).json({
+          success: true,
+          message: "Information Updated Successfully",
+          User: UserData,
+        });
     } else {
       res
         .status(502)
@@ -355,5 +353,33 @@ export const updateDetails = catchAsyncError(async (req, res, next) => {
     }
   } catch (error) {
     console.log(error);
+  }
+});
+
+export const refreshAccessToken = catchAsyncError(async (req, res) => {
+  const { id } = req.params;
+  const { refreshToken } = req.cookies;
+
+  try {
+    if (!id || !refreshToken) {
+      throw new ErrorHandler("ID or Refresh Token Missing", 402);
+    }
+
+    const isUserExist = await User.findById(id);
+    if (!isUserExist) {
+      throw new ErrorHandler(`User Not Exist With Provided Id : ${id}`, 402);
+    }
+
+    const isCorrectRefreshToken = isUserExist.refreshToken === refreshToken;
+    if (!isCorrectRefreshToken) {
+      throw new ErrorHandler("Invalid or Expired Refresh Token", 402);
+    }
+
+    sendToken(res, isUserExist, "Access Token Refreshed", 202);
+  } catch (error) {
+    console.log(error); // Log the error for debugging purposes
+    res
+      .status(error.statusCode || 502)
+      .json({ success: false, message: error.message });
   }
 });

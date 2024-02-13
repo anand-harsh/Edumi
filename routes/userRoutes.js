@@ -17,6 +17,7 @@ import {
   AdminGetAllUsers,
   updateUserRole,
   updateDetails,
+  refreshAccessToken,
 } from "../controllers/userController.js";
 import { isAuthenticated } from "../middlewares/Auth.js";
 import { isAdminAuthenticated } from "../middlewares/adminAuth.js";
@@ -41,5 +42,7 @@ router.route("/getAllUsers").get(isAdminAuthenticated, AdminGetAllUsers);
 router.route("/admin/users/:id").put(isAuthenticated, updateUserRole);
 
 router.route("/user/details/update").put(isAuthenticated, updateDetails);
+
+router.route("/refresh/token/:id").get(refreshAccessToken);
 
 export default router;

@@ -16,6 +16,7 @@ import { toast } from 'react-toastify';
 // other file imports
 import './header.css';
 import { ColorModeSwitcher } from '../../../ColorModeSwitcher';
+import { API_ENDPOINT } from '../../../config/constant';
 
 /**
  * Reusable Component for LinkButton in the sidebar
@@ -57,6 +58,43 @@ const Header = () => {
     });
     onClose();
     navigate('/');
+  };
+
+  const refreshToken = async () => {
+    try {
+      const res = await fetch(`${API_ENDPOINT}/refresh/token`, {
+        method: 'GET',
+        credentials: 'include',
+      });
+      const data = await res.json();
+
+      if (data?.success) {
+        onClose();
+        localStorage.setItem('isAuth', true, 3600000);
+        localStorage.setItem(
+          'userData',
+          JSON.stringify({ User: data?.user }),
+          3600000
+        );
+
+        toast.success(`Welcome Back ${data?.user?.name}`, {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+        });
+        navigate('/');
+      } else {
+        onClose();
+        navigate('/login');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -126,9 +164,9 @@ const Header = () => {
                   </>
                 ) : (
                   <>
-                    <Link to="/login" onClick={onClose}>
-                      <Button colorScheme={'yellow'}>Login</Button>
-                    </Link>
+                    <Button colorScheme={'yellow'} onClick={refreshToken}>
+                      Login
+                    </Button>
                     <p>OR</p>
                     <Link to="/signup" onClick={onClose}>
                       <Button colorScheme={'yellow'}>Sign Up</Button>

@@ -5,6 +5,7 @@ import { Course } from "../models/Course.js";
 import { sendToken } from "../utils/sendToken.js";
 import { sendEmail } from "../utils/sendEmail.js";
 import crypto from "crypto";
+import jwt from "jsonwebtoken";
 
 export const register = catchAsyncError(async (req, res, next) => {
   const { name, email, password } = req.body;
@@ -357,17 +358,17 @@ export const updateDetails = catchAsyncError(async (req, res, next) => {
 });
 
 export const refreshAccessToken = catchAsyncError(async (req, res) => {
-  const { id } = req.params;
   const { refreshToken } = req.cookies;
 
   try {
-    if (!id || !refreshToken) {
-      throw new ErrorHandler("ID or Refresh Token Missing", 402);
+    if (!refreshToken) {
+      throw new ErrorHandler("Refresh Token Missing", 402);
     }
+    const { _id } = jwt.decode(refreshToken);
 
-    const isUserExist = await User.findById(id);
+    const isUserExist = await User.findById(_id);
     if (!isUserExist) {
-      throw new ErrorHandler(`User Not Exist With Provided Id : ${id}`, 402);
+      throw new ErrorHandler(`User Not Exist With Provided Id : ${_id}`, 402);
     }
 
     const isCorrectRefreshToken = isUserExist.refreshToken === refreshToken;

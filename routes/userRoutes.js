@@ -43,6 +43,6 @@ router.route("/admin/users/:id").put(isAuthenticated, updateUserRole);
 
 router.route("/user/details/update").put(isAuthenticated, updateDetails);
 
-router.route("/refresh/token/:id").get(refreshAccessToken);
+router.route("/refresh/token").get(refreshAccessToken);
 
 export default router;

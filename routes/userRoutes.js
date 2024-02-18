@@ -21,8 +21,11 @@ import {
 } from "../controllers/userController.js";
 import { isAuthenticated } from "../middlewares/Auth.js";
 import { isAdminAuthenticated } from "../middlewares/adminAuth.js";
+import { upload } from "../middlewares/Multer.middleware.js";
 
-router.route("/register").post(register);
+router
+  .route("/register")
+  .post(upload.fields([{ name: "coverImage", maxCount: 1 }]), register);
 router.route("/login").post(login);
 router.route("/logout").post(logout);
 router.route("/me").get(isAuthenticated, getMyProfile);

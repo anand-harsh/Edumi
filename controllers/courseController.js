@@ -15,7 +15,11 @@ export const createCourse = catchAsyncError(async (req, res, next) => {
   // if (!title || !description || !category || !createdBy)
   // return next(new ErrorHandler("Please fill all the feilds", 400));
   const { title, description, category, createdBy } = req.body;
-  const file = req.file;
+
+  const file = req.files?.courseCoverImage[0];
+
+  // console.log(file);
+
   await Course.create({
     title,
     description,
@@ -51,11 +55,11 @@ export const addLectureToCourse = catchAsyncError(async (req, res, next) => {
     return next(new ErrorHandler("Lecture already exists in the course", 400));
   }
 
-  var lectureId = new mongoose.Types.ObjectId();// Generating the New Id for the Lectures
+  var lectureId = new mongoose.Types.ObjectId(); // Generating the New Id for the Lectures
   course.lectures.push({
     lectureId,
     title,
-    description
+    description,
   });
 
   course.numVideos += 1;
@@ -65,7 +69,6 @@ export const addLectureToCourse = catchAsyncError(async (req, res, next) => {
   res.status(200).json({
     success: true,
     message: "Lecture added to the course successfully",
-
   });
 });
 
@@ -87,14 +90,16 @@ export const getCourseLectures = catchAsyncError(async (req, res, next) => {
   });
 });
 
-export const getAllCoursesAvailable = catchAsyncError(async (req, res, next) => {
-  const courses = await Course.find();
+export const getAllCoursesAvailable = catchAsyncError(
+  async (req, res, next) => {
+    const courses = await Course.find();
 
-  if (courses.length === 0) {
-    return res.status(404).json({ success: false, message: 'No courses found' });
+    if (courses.length === 0) {
+      return res
+        .status(404)
+        .json({ success: false, message: "No courses found" });
+    }
+
+    res.status(200).json({ success: true, courses });
   }
-
-  res.status(200).json({ success: true, courses });
-});
-
-
+);

@@ -32,28 +32,37 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [imagePrev, setimagePrev] = useState('');
-  const [image, setImage] = useState('');
+  const [coverImage, setCoverImage] = useState(null);
 
   const changeImageHandler = e => {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
+
+    console.log(file);
+
     reader.onloadend = () => {
       setimagePrev(reader.result);
-      setImage(file);
+      setCoverImage(file);
     };
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
+
+    // Binding Form Data
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('name', name);
+    formData.append('password', password);
+    formData.append('coverImage', coverImage);
+
     try {
       const res = await fetch(`${API_ENDPOINT}/register`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+
         credentials: 'include',
-        body: JSON.stringify({ email, name, password }),
+        body: formData,
       });
 
       const data = await res.json();

@@ -9,13 +9,20 @@ import {
 import { isAdminAuthenticated } from "../middlewares/adminAuth.js";
 import { addCourseToUserPlaylist } from "../controllers/userController.js";
 import { isAuthenticated } from "../middlewares/Auth.js";
+import { upload } from "../middlewares/Multer.middleware.js";
 const router = express.Router();
 
 // TODO: get all course without lectures
 router.route("/courses").get(getAllCourses);
 
 // TODO: create new course, only admins
-router.route("/createcourse").post(isAdminAuthenticated, createCourse);
+router
+  .route("/createcourse")
+  .post(
+    isAdminAuthenticated,
+    upload.fields([{ name: "courseCoverImage", maxCount: 1 }]),
+    createCourse
+  );
 
 // TODO: add lecturs, only Admins
 router.post(

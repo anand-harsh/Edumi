@@ -44,13 +44,18 @@ const CreateCourse = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
+
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('createdBy', createdBy);
+    formData.append('category', category);
+    formData.append('courseCoverImage', image);
+
     try {
       const res = await fetch(`${API_ENDPOINT}/createcourse`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ title, description, createdBy, category }),
+        body: formData,
         credentials: 'include',
       });
 

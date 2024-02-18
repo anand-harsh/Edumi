@@ -1,5 +1,5 @@
 import express from "express";
-// import { config } from "dotenv";
+import { config } from "dotenv";
 import course from "./routes/courseRoutes.js";
 import user from "./routes/userRoutes.js";
 import ErrorMiddleware from "./middlewares/Error.js";

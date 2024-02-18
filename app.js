@@ -7,9 +7,7 @@ import ErrorMiddleware from "./middlewares/Error.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-// config({
-//   path: "./configs/config.env",
-// });
+
 const app = express();
 
 app.use(

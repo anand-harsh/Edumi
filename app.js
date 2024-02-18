@@ -1,3 +1,4 @@
+require('dotenv').config()
 import express from "express";
 import { config } from "dotenv";
 import course from "./routes/courseRoutes.js";
@@ -6,9 +7,9 @@ import ErrorMiddleware from "./middlewares/Error.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-config({
-  path: "./configs/config.env",
-});
+// config({
+//   path: "./configs/config.env",
+// });
 const app = express();
 
 app.use(

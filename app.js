@@ -13,7 +13,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://edumi-zeta.vercel.app",
+    origin: "https://edumi.vercel.app",
     credentials: true,
   })
 );

@@ -1,6 +1,6 @@
 .foot-sec-child {
-    margin-top: 1rem;
-  }
+  margin-top: 1rem;
+}
 
 @media (min-width: 500px) {
   .description {
@@ -15,11 +15,9 @@
     align-items: flex-start;
     padding: 2rem 10vw;
   }
-
   .description {
     max-width: 50%;
   }
-
   .social > a {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -50,4 +48,5 @@
     padding: 2rem 15vw;
   }
 }
+
 

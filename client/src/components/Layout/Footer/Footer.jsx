@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Heading, HStack } from '@chakra-ui/react';
+import { Box, Heading, HStack, useColorModeValue } from '@chakra-ui/react';
 import {
   TiSocialInstagramCircular,
   TiSocialLinkedinCircular,
@@ -7,17 +7,21 @@ import {
 } from 'react-icons/ti';
 import { DiGithub } from 'react-icons/di';
 import './footer.css';
+import { ColorModeSwitcher } from '../../../ColorModeSwitcher';
 
 const Footer = () => {
+  const bgColor = useColorModeValue('#ffffff', 'gray.800');
+  const paraColor = useColorModeValue('black','#ffffff');
+  const copyRightColor = useColorModeValue('#db3e00','#ffffff');
   return (
     <Box
       paddingLeft={'6vw'}
       paddingTop={'10'}
       paddingBottom={'5'}
       paddingRight={'6vw'}
-      bg={'#0d0b1e'}
-    >
-      <HStack style={{ overflowY: 'hidden' }} justifyContent={'space-between'}>
+      bg={bgColor}
+    ><hr style={{ marginBottom: '30px' }}/>
+      <HStack style={{ overflowY: 'hidden'}} justifyContent={'space-between'}>
         <Box>
           <Heading
             children="Let's Start with Edumi!"
@@ -47,7 +51,7 @@ const Footer = () => {
         <Heading
           fontFamily={'body'}
           children="Your journey with Edumi promises an immersive and dynamic experience, fostering an environment where education transcends traditional boundaries."
-          color={'white'}
+          color={paraColor}
           size={'sm'}
           style={{ overflowY: 'hidden' }}
           marginBottom={'20px'}
@@ -70,7 +74,7 @@ const Footer = () => {
         <a href="https://www.github.com/anand-harsh/Edumi">
           <Box
             width={'130px'}
-            bg={'white'}
+            bg={'#db3e00'}
             padding={'1'}
             borderRadius={'5px'}
             style={{ overflowY: 'hidden' }}
@@ -78,7 +82,7 @@ const Footer = () => {
             <Heading
               fontFamily={'body'}
               children="View on GitHub"
-              color={'black'}
+              color={'white'}
               size={'sm'}
               style={{ overflowY: 'hidden', display: 'inline' }}
               width={'200px'}
@@ -131,7 +135,7 @@ const Footer = () => {
             <Heading
               fontFamily={'body'}
               children="© 2024 Edumi. All rights reserved."
-              color={'white'}
+              color={copyRightColor}
               size={'sm'}
               style={{ overflowY: 'hidden' }}
               width={'500px'}
@@ -151,6 +155,8 @@ const Footer = () => {
           </Box>
         </HStack>
       </Box>
+            {/* Color mode switcher */}
+            <ColorModeSwitcher />
     </Box>
   );
 };

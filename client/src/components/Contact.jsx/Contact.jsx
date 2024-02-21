@@ -8,6 +8,7 @@ import {
   Button,
   Flex,
   Image,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -35,10 +36,12 @@ const Contact = () => {
     };
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     // Add your form submission logic here
   };
+
+  const textColor = useColorModeValue('gray.700', 'white');
 
   return (
     <Container marginLeft="10%" maxWidth="80%">
@@ -49,18 +52,24 @@ const Contact = () => {
               children={'Contact Us'}
               marginBottom="4px"
               fontFamily="'Uncut Sans', sans-serif"
+              color={textColor} // Set text color
             />
 
-            <Box my={3} textAlign="left" color="gray.700">
+            <Box my={3} textAlign="left" color={textColor}>
+              {' '}
+              {/* Set text color */}
               Request For a Course?
-              <Link to="/request" style={{ textDecoration: 'none', marginLeft: '5px' }}>
+              <Link
+                to="/request"
+                style={{ textDecoration: 'none', marginLeft: '5px' }}
+              >
                 <Button colorScheme="yellow" variant={'link'}>
                   Click here
                 </Button>
               </Link>
             </Box>
 
-            <Box my={'4'} >
+            <Box my={'4'}>
               <FormLabel htmlFor="name" children="Name" />
               <Input
                 required
@@ -69,7 +78,7 @@ const Contact = () => {
                 onChange={e => setName(e.target.value)}
                 placeholder="Enter your Name"
                 focusBorderColor="yellow.400"
-                width={{ base: "100%", md: "505px" }}  // Responsive width
+                width={{ base: '100%', md: '505px' }} // Responsive width
                 height="45px"
               />
             </Box>
@@ -84,7 +93,7 @@ const Contact = () => {
                 placeholder=" &#128231; Enter your Email Address"
                 type="email"
                 focusBorderColor="yellow.400"
-                width={{ base: "100%", md: "505px" }}  // Responsive width
+                width={{ base: '100%', md: '505px' }} // Responsive width
                 height="45px"
               />
             </Box>
@@ -98,8 +107,10 @@ const Contact = () => {
                 onChange={e => setMessage(e.target.value)}
                 placeholder="Your message"
                 focusBorderColor="yellow.400"
-                width={{ base: "100%", md: "505px" }}  // Responsive width
-                height="100px"
+                width={{ base: '100%', md: '505px' }} // Responsive width
+                paddingTop="15px"
+                paddingBottom="60px"
+                paddingLeft="10px" // Add padding to the left
                 textAlign="left"
               />
             </Box>
@@ -108,9 +119,9 @@ const Contact = () => {
               my={3}
               colorScheme="#EB5017"
               background="#EB5017"
-              width={{ base: "100%", md: "505px" }}  // Responsive width
-              height="45px"                           // Constant height
-              borderRadius="16px"
+              width={{ base: '100%', md: '505px' }} // Responsive width
+              height="45px"
+              borderRadius="sm"
               gap="10px"
             >
               Send Request
@@ -118,11 +129,18 @@ const Contact = () => {
           </form>
         </VStack>
 
-        <Box width={{ base: "100%", md: "50%" }} height="auto" style={{ filter: 'blur(2px)', opacity: '0.1' }}>
-  <Image src={contactImage} alt="Contact Image" width="100%" height="90%" />
-</Box>
-
-
+        <Box
+          width={{ base: '100%', md: '50%' }}
+          height="auto"
+          style={{ filter: 'blur(2px)', opacity: '0.1' }}
+        >
+          <Image
+            src={contactImage}
+            alt="Contact Image"
+            width="100%"
+            height="90%"
+          />
+        </Box>
       </Flex>
       <GoToTopButton />
     </Container>

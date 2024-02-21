@@ -1,7 +1,3 @@
-.foot-sec-child {
-  margin-top: 1rem;
-}
-
 @media (min-width: 500px) {
   .description {
     width: 400px;

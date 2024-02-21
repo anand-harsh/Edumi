@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Heading, HStack, useColorModeValue } from '@chakra-ui/react';
+import { Box, Heading, HStack, VStack, useColorModeValue, useBreakpointValue } from '@chakra-ui/react';
 import {
   TiSocialInstagramCircular,
   TiSocialLinkedinCircular,
@@ -13,6 +13,8 @@ const Footer = () => {
   const bgColor = useColorModeValue('#ffffff', 'gray.800');
   const paraColor = useColorModeValue('black','#ffffff');
   const copyRightColor = useColorModeValue('#db3e00','#ffffff');
+
+  const columnLayout = useBreakpointValue({ base: true, md: false}); // Change to column layout on medium screens
   return (
     <Box
       paddingLeft={'6vw'}
@@ -20,35 +22,57 @@ const Footer = () => {
       paddingBottom={'5'}
       paddingRight={'6vw'}
       bg={bgColor}
-    ><hr style={{ marginBottom: '30px' }}/>
-      <HStack style={{ overflowY: 'hidden'}} justifyContent={'space-between'}>
-        <Box>
-          <Heading
-            children="Let's Start with Edumi!"
-            color={'yellow.400'}
-            style={{ overflowY: 'hidden' }}
-            fontSize={'2rem'}
-          />
-        </Box>
-        <a href="mailto:harsh.anand.ggl@gmail.com">
-          <Box
-            bg={'#db3e00'}
-            padding={'1'}
-            borderRadius={'5px'}
-            marginRight={'3vw'}
-          >
+    >
+      <hr style={{ marginBottom: '30px' }}/>
+        {columnLayout ? ( // If column layout
+          <VStack align="flex-start"> {/* Aligning children in a column */}
             <Heading
-              fontFamily={'body'}
-              children="Send a message"
-              color={'white'}
-              fontSize={'1rem'}
-              style={{ overflowY: 'hidden', display: 'inline' }}
+              children="Let's Start with Edumi!"
+              color={'yellow.400'}
+              fontSize={'2rem'}
             />
-          </Box>
-        </a>
-      </HStack>
+            <a href="mailto:harsh.anand.ggl@gmail.com">
+              <Box
+                bg={'#db3e00'}
+                padding={'1'}
+                borderRadius={'5px'}
+              >
+                <Heading
+                  fontFamily={'body'}
+                  children="Send a message"
+                  color={'white'}
+                  fontSize={'1rem'}
+                />
+              </Box>
+            </a>
+          </VStack>
+        ) : (
+          <HStack justifyContent={'space-between'}> {/* Aligning children in a row */}
+            <Heading
+              children="Let's Start with Edumi!"
+              color={'yellow.400'}
+              fontSize={'2rem'}
+            />
+            <a href="mailto:harsh.anand.ggl@gmail.com">
+              <Box
+                bg={'#db3e00'}
+                padding={'1'}
+                borderRadius={'5px'}
+                marginRight={'3vw'}
+              >
+                <Heading
+                  fontFamily={'body'}
+                  children="Send a message"
+                  color={'white'}
+                  fontSize={'1rem'}
+                />
+              </Box>
+            </a>
+          </HStack>
+        )}
       <Box flexWrap={'wrap'}>
         <Heading
+          marginTop={'20px'}
           fontFamily={'body'}
           children="Your journey with Edumi promises an immersive and dynamic experience, fostering an environment where education transcends traditional boundaries."
           color={paraColor}
@@ -84,13 +108,12 @@ const Footer = () => {
               children="View on GitHub"
               color={'white'}
               size={'sm'}
-              style={{ overflowY: 'hidden', display: 'inline' }}
+              style={{ overflowY: 'hidden'}}
               width={'200px'}
             />
           </Box>
         </a>
       </HStack>
-
       <Box className="foot-sec-container">
         <HStack
           marginLeft={'1vw'}

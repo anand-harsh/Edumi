@@ -169,3 +169,10 @@ All endpoints are relative to the base URL: http://localhost:4000 (for local dev
    - /sort?sortBy=popularity.
  - Responses:
    - 200: Courses according to the sort criteria
+6. ### Sort Courses
+ -  Endpoint: /course/searchCourses
+ -	Method: GET
+ - Request Parameters:
+   - /searchCourses?keyword=
+ - Responses:
+   - 200: Courses according to the search

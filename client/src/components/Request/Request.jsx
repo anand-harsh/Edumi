@@ -140,16 +140,21 @@ const Request = () => {
             </Button>
           </form>
         </VStack>
-
-        <Box width={{ base: '100%', md: '50%' }} height="auto" marginBottom={{ base: '6', md: '0' }} display={displayImage}>
-          <Image
-            src={requestImage}
-            alt="Request Image"
-            width="100%"
-            height="90%"
-            style={{ filter: 'blur(2px)', opacity: '0.1' }}
-          />
-        </Box>
+ <Box
+  width={{ base: '100%', md: '40%' }} // Adjust the width for smaller screens
+  height="auto"
+  marginBottom={{ base: '6', md: '0' }}
+  marginRight={{ base: '0', md: '4' }} // Add margin to the right for larger screens
+  display={displayImage}
+>
+  <Image
+    src={requestImage}
+    alt="Request Image"
+    width="100%"
+    height="90%"
+    style={{ filter: 'blur(2px)', opacity: '0.1' }}
+  />
+</Box>
       </Flex>
       <GoToTopButton />
     </Container>

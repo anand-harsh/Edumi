@@ -116,5 +116,21 @@ export const sortCourses = catchAsyncError(async (req, res, next) => {
     courses,
   });
 });
+export const searchCourses = catchAsyncError(async (req, res, next) => {
+  const keyword = req.query.keyword;
+
+  const courses = await Course.find({
+    $or: [
+      { title: { $regex: keyword, $options: "i" } },
+      { description: { $regex: keyword, $options: "i" } },
+    ],
+  });
+
+  res.status(200).json({
+    success: true,
+    courses,
+  });
+});
+
 
 

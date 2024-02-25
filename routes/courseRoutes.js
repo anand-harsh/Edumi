@@ -5,7 +5,8 @@ import {
   addLectureToCourse,
   getCourseLectures,
   getAllCoursesAvailable,
-  sortCourses
+  sortCourses,
+  searchCourses
 } from "../controllers/courseController.js";
 import { isAdminAuthenticated } from "../middlewares/adminAuth.js";
 import { addCourseToUserPlaylist } from "../controllers/userController.js";
@@ -36,5 +37,6 @@ router.post("/addToPlaylist/:id", isAuthenticated, addCourseToUserPlaylist);
 // TODO:  get course details
 router.get("/getAllCourses", isAuthenticated, getAllCoursesAvailable);
 router.get("/sortCourses", isAuthenticated, sortCourses);
+router.get("/searchCourses", isAuthenticated, searchCourses);
 
 export default router;

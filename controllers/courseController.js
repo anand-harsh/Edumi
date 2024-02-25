@@ -96,5 +96,25 @@ export const getAllCoursesAvailable = catchAsyncError(async (req, res, next) => 
 
   res.status(200).json({ success: true, courses });
 });
+// Sort Courses
+
+export const sortCourses = catchAsyncError(async (req, res, next) => {
+  const sortBy = req.query.sortBy; //
+
+  let sortCriteria = {};
+  if (sortBy === "popularity") {
+    sortCriteria = { views: -1 };
+  } else if (sortBy === "date") {
+    sortCriteria = { createdAt: -1 };
+  } else if (sortBy === "numLectures") {
+    sortCriteria = { numVideos: -1 };
+  }
+
+  const courses = await Course.find().sort(sortCriteria);
+  res.status(200).json({
+    success: true,
+    courses,
+  });
+});
 
 

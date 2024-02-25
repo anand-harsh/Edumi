@@ -162,3 +162,10 @@ All endpoints are relative to the base URL: http://localhost:4000 (for local dev
  - Responses:
    - 200: Course details with lectures
    - 404: Course not found
+5. ### Sort Courses
+ -  Endpoint: /course/sortCourses
+ -	Method: GET
+ - Request Parameters:
+   - /sort?sortBy=popularity.
+ - Responses:
+   - 200: Courses according to the sort criteria

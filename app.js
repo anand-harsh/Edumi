@@ -13,7 +13,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://edumi.coderypto.tech/",
+    origin: "https://edumi.coderypto.tech",
     credentials: true,
   })
 );
